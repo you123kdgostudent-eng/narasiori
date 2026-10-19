@@ -184,6 +184,66 @@
       font-weight: 500;
     }
 
+    /* ---------- Overview ---------- */
+    .flow {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+    }
+    .daybar {
+      display: flex;
+      gap: 2px;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .seg--drive { background: var(--matcha); }
+    .seg--spot { background: var(--shu); }
+    .seg--meal { background: var(--gold); }
+    .daybar__ticks {
+      position: relative;
+      height: 1.6em;
+      margin-top: 6px;
+      font-size: .72rem;
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+    }
+    .daybar__ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+    .daybar__ticks span:first-child { transform: none; }
+    .daybar__ticks span:last-child { transform: translateX(-100%); }
+    .legend {
+      list-style: none;
+      margin: 12px 0 0; padding: 0;
+      display: flex; flex-wrap: wrap; gap: 6px 16px;
+      font-size: .8rem;
+      color: var(--ink-soft);
+    }
+    .legend li { display: inline-flex; align-items: center; gap: 6px; }
+    .legend b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .legend__key { width: 12px; height: 12px; border-radius: 3px; }
+    .flow-steps {
+      list-style: none;
+      margin: 18px 0 0; padding: 16px 0 0;
+      border-top: 1px solid var(--line);
+      display: grid; gap: 14px;
+    }
+    .flow-steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .flow-steps li > div { min-width: 0; }
+    .flow-steps__when {
+      flex: none;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--matcha);
+      background: var(--wakakusa-soft);
+      border: 1px solid var(--moss);
+    }
+    .flow-steps strong { display: block; font-family: var(--font-serif); color: var(--matcha-deep); font-size: 1rem; }
+    .flow-steps p { margin: 0; font-size: .85rem; color: var(--ink-soft); }
+
     /* ---------- Now bar ---------- */
     .nowbar {
       display: none;
@@ -629,7 +689,7 @@
           <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-hourglass"/></svg></div>
           <div>
             <div class="stat__label">総移動時間</div>
-            <div class="stat__value">約5時間半</div>
+            <div class="stat__value">約5時間45分</div>
           </div>
         </div>
         <a class="route-btn" id="routeBtn" target="_blank" rel="noopener">
@@ -637,6 +697,40 @@
         </a>
       </div>
     </div>
+
+    <!-- ===== Overview ===== -->
+    <section id="flow">
+      <div class="container">
+        <h2 class="section-title reveal">1日の流れ <span>OVERVIEW</span></h2>
+        <div class="flow reveal">
+          <div class="daybar" role="img" aria-label="10時から21時まで。運転 約5時間45分、観光 約3時間45分、夕ごはん 約1時間30分"><span class="seg seg--drive" style="flex: 75"></span><span class="seg seg--spot" style="flex: 135"></span><span class="seg seg--drive" style="flex: 120"></span><span class="seg seg--spot" style="flex: 90"></span><span class="seg seg--drive" style="flex: 75"></span><span class="seg seg--meal" style="flex: 90"></span><span class="seg seg--drive" style="flex: 75"></span></div>
+          <div class="daybar__ticks" aria-hidden="true"><span style="left: 0.00%">10:00</span><span style="left: 27.27%">13:00</span><span style="left: 54.55%">16:00</span><span style="left: 81.82%">19:00</span><span style="left: 100.00%">21:00</span></div>
+          <ul class="legend">
+            <li><span class="legend__key seg--drive"></span>運転<b>約5時間45分</b></li>
+            <li><span class="legend__key seg--spot"></span>観光<b>約3時間45分</b></li>
+            <li><span class="legend__key seg--meal"></span>夕ごはん<b>約1時間30分</b></li>
+          </ul>
+          <ol class="flow-steps">
+            <li>
+              <span class="flow-steps__when">朝</span>
+              <div><strong>天王寺 → 宇陀</strong><p>10:00に出発。芸術の森でアート散策とランチ</p></div>
+            </li>
+            <li>
+              <span class="flow-steps__when">昼</span>
+              <div><strong>宇陀 → 十津川</strong><p>山あいを約2時間南下して、谷瀬の吊り橋で絶景</p></div>
+            </li>
+            <li>
+              <span class="flow-steps__when">夕</span>
+              <div><strong>十津川 → 五條</strong><p>山を下りて、夕ごはんでゆっくりひと休み</p></div>
+            </li>
+            <li>
+              <span class="flow-steps__when">夜</span>
+              <div><strong>五條 → 天王寺</strong><p>21:00頃に到着・解散</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== Schedule ===== -->
     <section id="schedule">
@@ -777,7 +871,7 @@
             <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
             <div>
               <h3>本格ロングドライブ</h3>
-              <p>総移動時間 <strong>約5時間半</strong>、走行距離 <strong>約250km</strong>。運転手さんの負担を全員でフォロー！</p>
+              <p>総移動時間 <strong>約5時間45分</strong>、走行距離 <strong>約250km</strong>。運転手さんの負担を全員でフォロー！</p>
             </div>
           </div>
           <div class="point reveal">
