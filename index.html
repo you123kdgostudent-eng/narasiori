@@ -147,20 +147,6 @@
     .stat__label { font-size: .7rem; color: var(--ink-soft); letter-spacing: .08em; }
     .stat__value { font-weight: 700; color: var(--matcha); line-height: 1.4; font-size: .98rem; }
 
-    .route-btn {
-      grid-column: 1 / -1;
-      display: flex; align-items: center; justify-content: center; gap: .5em;
-      padding: 13px 16px;
-      border-radius: 999px;
-      background: var(--matcha);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: .92rem;
-      transition: transform .15s, background .2s;
-    }
-    .route-btn:active { transform: scale(.97); }
-    .route-btn:hover { background: var(--matcha-deep); }
 
     /* ---------- Section ---------- */
     section { padding: 44px 0 8px; }
@@ -696,9 +682,6 @@
             <div class="stat__value">約5時間45分</div>
           </div>
         </div>
-        <a class="route-btn" id="routeBtn" target="_blank" rel="noopener">
-          <svg class="i" aria-hidden="true"><use href="#i-map"/></svg> 全ルートをGoogleマップで見る
-        </a>
       </div>
     </div>
 
@@ -967,19 +950,6 @@
 
   <script>
     (function () {
-      // 全ルート（天王寺 → 芸術の森 → 谷瀬の吊り橋 → 天王寺）
-      var route = {
-        origin: "天王寺駅",
-        waypoints: ["室生山上公園芸術の森", "谷瀬の吊り橋", "奈良県五條市"],
-        destination: "天王寺駅"
-      };
-      document.getElementById("routeBtn").href =
-        "https://www.google.com/maps/dir/?api=1" +
-        "&origin=" + encodeURIComponent(route.origin) +
-        "&destination=" + encodeURIComponent(route.destination) +
-        "&waypoints=" + encodeURIComponent(route.waypoints.join("|")) +
-        "&travelmode=driving";
-
       // スクロールでふわっと表示
       // 画面に入った要素に .is-show を付けます。同時に入った要素は 0.12 秒ずつずらして順番に表示。
       var revealItems = document.querySelectorAll(".reveal");
