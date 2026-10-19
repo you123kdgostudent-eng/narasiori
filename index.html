@@ -11,19 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* 奈良の伝統色：松葉の深緑・若草色・朱・柿渋・墨・生成り */
       --matcha: #2e4a3e;
       --matcha-deep: #1f342b;
       --matcha-soft: #5b7a69;
-      --moss: #8aa38f;
-      --shu: #d9534f;
-      --shu-soft: #f6e1dc;
-      --gold: #b8955a;
-      --gold-soft: #efe3cc;
-      --washi: #f7f3ea;
-      --paper: #fffdf8;
-      --ink: #2b2b28;
-      --ink-soft: #6b6a63;
-      --line: #e3dccb;
+      --moss: #a3ae52;          /* 若草色（やや落ち着かせたもの） */
+      --wakakusa-soft: #eef0da;
+      --shu: #c8503a;           /* 朱 */
+      --shu-soft: #f6e0d6;
+      --gold: #9a5a3c;          /* 柿渋色 */
+      --gold-soft: #f0dccb;
+      --washi: #f8f4e6;         /* 生成り */
+      --paper: #fffdf6;
+      --ink: #3d3a35;           /* 墨 */
+      --ink-soft: #6f6a60;
+      --line: #e4dcc6;
       --radius: 18px;
       --shadow: 0 6px 24px rgba(31, 52, 43, .10);
       --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;
@@ -171,7 +173,7 @@
       content: "";
       width: 8px; height: 26px;
       border-radius: 4px;
-      background: linear-gradient(180deg, var(--shu), var(--gold));
+      background: linear-gradient(180deg, var(--moss), var(--gold));
     }
     .section-title span {
       font-family: var(--font-sans);
@@ -212,9 +214,11 @@
     .timeline::before {
       content: "";
       position: absolute;
-      left: 23px; top: 10px; bottom: 10px;
-      width: 2px;
-      background: repeating-linear-gradient(180deg, var(--moss) 0 6px, transparent 6px 12px);
+      left: 17px; top: 10px; bottom: 10px;
+      width: 14px;
+      background: var(--moss);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 28'%3E%3Cg fill='black'%3E%3Cellipse cx='2.7' cy='6' rx='1.3' ry='2.6' transform='rotate%28-10 2.7 6%29'/%3E%3Cellipse cx='5.5' cy='6' rx='1.3' ry='2.6' transform='rotate%2810 5.5 6%29'/%3E%3Cellipse cx='8.5' cy='20' rx='1.3' ry='2.6' transform='rotate%28-10 8.5 20%29'/%3E%3Cellipse cx='11.3' cy='20' rx='1.3' ry='2.6' transform='rotate%2810 11.3 20%29'/%3E%3C/g%3E%3C/svg%3E") repeat-y center / 14px 28px;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 28'%3E%3Cg fill='black'%3E%3Cellipse cx='2.7' cy='6' rx='1.3' ry='2.6' transform='rotate%28-10 2.7 6%29'/%3E%3Cellipse cx='5.5' cy='6' rx='1.3' ry='2.6' transform='rotate%2810 5.5 6%29'/%3E%3Cellipse cx='8.5' cy='20' rx='1.3' ry='2.6' transform='rotate%28-10 8.5 20%29'/%3E%3Cellipse cx='11.3' cy='20' rx='1.3' ry='2.6' transform='rotate%2810 11.3 20%29'/%3E%3C/g%3E%3C/svg%3E") repeat-y center / 14px 28px;
     }
     .tl-item {
       position: relative;
@@ -360,13 +364,18 @@
       font-size: .88rem;
       line-height: 1.6;
     }
+    .hoof {
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+    }
     .safety li::before {
       content: "";
       flex: none;
-      width: 6px; height: 6px;
-      margin-top: .62em;
-      transform: rotate(45deg);
-      background: var(--gold);
+      width: 11px; height: 11px;
+      margin-top: .45em;
+      background: var(--gold-soft);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
     }
     .safety li span { min-width: 0; }
     .safety em { font-style: normal; color: #ffd2b8; font-weight: 700; }
@@ -412,6 +421,31 @@
     .checklist input:focus-visible + .checkbox { outline: 2px solid var(--shu); outline-offset: 2px; }
     .check-progress { font-size: .8rem; color: var(--ink-soft); margin: 10px 4px 0; text-align: right; }
 
+    /* ---------- Memo ---------- */
+    .memo {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .memo__label { display: block; font-size: .85rem; color: var(--matcha); font-weight: 700; margin-bottom: 8px; }
+    .memo textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font: inherit;
+      font-size: .95rem;
+      color: var(--ink);
+      line-height: 2em;
+      padding: 0 4px;
+      background-color: transparent;
+      background-image: linear-gradient(transparent calc(2em - 1px), var(--line) calc(2em - 1px));
+      background-size: 100% 2em;
+      background-attachment: local;
+    }
+    .memo textarea:focus { outline: 2px solid var(--moss); outline-offset: 4px; border-radius: 4px; }
+    .memo__hint { margin: 8px 0 0; font-size: .75rem; color: var(--ink-soft); }
+
     /* ---------- Footer ---------- */
     footer {
       text-align: center;
@@ -452,6 +486,24 @@
     }
     .to-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
 
+    /* ---------- Deer ---------- */
+    .hero__deer {
+      position: absolute;
+      left: 5%;
+      bottom: 5.2vw;
+      display: flex; align-items: flex-end;
+      color: var(--matcha-deep);
+      z-index: -1;
+    }
+    .deer { width: 88px; height: 88px; }
+    .deer--doe { width: 64px; height: 64px; margin-left: -4px; transform: scaleX(-1); }
+    @media (min-width: 720px) {
+      .hero__deer { bottom: 34px; left: calc(50% - 330px); }
+      .deer { width: 112px; height: 112px; }
+      .deer--doe { width: 82px; height: 82px; }
+    }
+    .footer-deer { width: 56px; height: 56px; color: var(--matcha); margin: 0 auto 6px; }
+
     /* ---------- Line icons ---------- */
     .i {
       width: 1em; height: 1em;
@@ -465,15 +517,17 @@
     .hero__car { color: rgba(255, 255, 255, .85); }
     .stat__icon, .tl-icon { color: var(--matcha); }
     .tl-item--spot .tl-icon, .point__icon { color: var(--shu); }
-    .tl-item--goal .tl-icon { color: #8a6a35; }
+    .tl-item--goal .tl-icon { color: var(--gold); }
     .tl-item.is-now .tl-icon { color: #fff; }
     .safety h3 .i { font-size: 1.15em; }
     .tl-highlights li { display: inline-flex; align-items: center; gap: .45em; }
+    .tl-highlights li { background: var(--wakakusa-soft); }
     .tl-highlights li::before {
       content: "";
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--shu);
+      width: 9px; height: 9px;
+      background: var(--gold);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
     }
 
     /* ---------- Larger screens ---------- */
@@ -481,7 +535,7 @@
       .summary__card { grid-template-columns: repeat(4, 1fr); padding: 24px; }
       .points { grid-template-columns: 1fr 1fr; }
       .points .point:last-child { grid-column: 1 / -1; }
-      .timeline::before { left: 27px; }
+      .timeline::before { left: 21px; }
       .tl-icon { width: 56px; height: 56px; font-size: 1.55rem; }
       .tl-item { padding-left: 76px; }
       .hero__inner { padding-bottom: 190px; }
@@ -494,7 +548,7 @@
   </style>
 </head>
 <body>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-car" viewBox="0 0 24 24"><path d="M3 13l2-5.2A2 2 0 0 1 6.9 6.5h10.2a2 2 0 0 1 1.9 1.3L21 13v4h-2.7M5.7 17H3v-4h18M9.3 17h5.4"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></symbol><symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 19l7-11 4 6 2.5-3.5L22 19z"/><path d="M7.2 10.8l1.8 1.4 1.7-1.4"/></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 16h20M4 8v11M20 8v11M4 8c3 6 13 6 16 0M8 12.4V16M12 13.5V16M16 12.4V16"/></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 18h18M6 15a6 6 0 0 1 12 0M12 4v3M4.9 7.9l1.5 1.5M19.1 7.9l-1.5 1.5M8 21h8"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-road" viewBox="0 0 24 24"><path d="M8 3L4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v1a5 5 0 0 0 10 0V3M7 21v-1a5 5 0 0 1 10 0v1M12 9v6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/></symbol><symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 8v9h18v-1.5a3 3 0 0 0-2.4-2.9L13 11.5 10 8.5 7 10 3 8zM3 17v2h18v-2M10.5 11.5l1-1M12.5 13l1-1"/></symbol><symbol id="i-jacket" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 5 3-2 5-2-1v11H8V10l-2 1-2-5zM12 6v15"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 20h20zM12 10v4M12 17h.01"/></symbol><symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 12h18a9 9 0 0 1-18 0zM8 21h8M13 3l-3 7M19 4l-6 6"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol></defs></svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-car" viewBox="0 0 24 24"><path d="M3 13l2-5.2A2 2 0 0 1 6.9 6.5h10.2a2 2 0 0 1 1.9 1.3L21 13v4h-2.7M5.7 17H3v-4h18M9.3 17h5.4"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></symbol><symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 19l7-11 4 6 2.5-3.5L22 19z"/><path d="M7.2 10.8l1.8 1.4 1.7-1.4"/></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 16h20M4 8v11M20 8v11M4 8c3 6 13 6 16 0M8 12.4V16M12 13.5V16M16 12.4V16"/></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 18h18M6 15a6 6 0 0 1 12 0M12 4v3M4.9 7.9l1.5 1.5M19.1 7.9l-1.5 1.5M8 21h8"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-road" viewBox="0 0 24 24"><path d="M8 3L4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v1a5 5 0 0 0 10 0V3M7 21v-1a5 5 0 0 1 10 0v1M12 9v6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/></symbol><symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 8v9h18v-1.5a3 3 0 0 0-2.4-2.9L13 11.5 10 8.5 7 10 3 8zM3 17v2h18v-2M10.5 11.5l1-1M12.5 13l1-1"/></symbol><symbol id="i-jacket" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 5 3-2 5-2-1v11H8V10l-2 1-2-5zM12 6v15"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 20h20zM12 10v4M12 17h.01"/></symbol><symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 12h18a9 9 0 0 1-18 0zM8 21h8M13 3l-3 7M19 4l-6 6"/></symbol><symbol id="deer-buck" viewBox="0 0 100 100"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="60" cy="56" rx="23" ry="11"/><path d="M44 55L32 30" stroke-width="10"/><ellipse cx="25" cy="29" rx="10" ry="5.5" transform="rotate(-18 25 29)"/><ellipse cx="33" cy="22" rx="5" ry="2.2" transform="rotate(-35 33 22)"/><path d="M42 60L40 89M48 62L50 89M72 60L75 73L73 89M79 58L83 72L80 88" stroke-width="4.2" fill="none"/><ellipse cx="83" cy="50" rx="3.5" ry="2.2" transform="rotate(30 83 50)"/><path d="M28 24L30 8M29.6 14L23 9.5M30 8L35.5 3.5M30 8L27 2" stroke-width="2.4" fill="none"/></g></symbol><symbol id="deer-doe" viewBox="0 0 100 100"><g fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="60" cy="56" rx="23" ry="11"/><path d="M44 55L32 30" stroke-width="10"/><ellipse cx="25" cy="29" rx="10" ry="5.5" transform="rotate(-18 25 29)"/><ellipse cx="33" cy="22" rx="5" ry="2.2" transform="rotate(-35 33 22)"/><path d="M42 60L40 89M48 62L50 89M72 60L75 73L73 89M79 58L83 72L80 88" stroke-width="4.2" fill="none"/><ellipse cx="83" cy="50" rx="3.5" ry="2.2" transform="rotate(30 83 50)"/></g></symbol><symbol id="i-deer" viewBox="0 0 24 24"><path d="M9 11.5c0 4 1.5 7.5 3 8.5 1.5-1 3-4.5 3-8.5zM9 11.5L5 10M15 11.5l4-1.5M10 9.5V4M10 6.5L8 4.8M14 9.5V4M14 6.5l2-1.7"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol></defs></svg>
 
   <!-- ===== Hero ===== -->
   <header class="hero" id="top">
@@ -526,6 +580,10 @@
         <path d="M0 116 Q100 100 200 114 T400 110 V140 H0Z" fill="#2e4a3e"/>
         <path d="M0 132 Q100 124 200 132 T400 130 V140 H0Z" fill="#f7f3ea"/>
       </svg>
+    </div>
+    <div class="hero__deer" aria-hidden="true">
+      <svg class="deer deer--buck"><use href="#deer-buck"/></svg>
+      <svg class="deer deer--doe"><use href="#deer-doe"/></svg>
     </div>
     <div class="hero__car" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
   </header>
@@ -687,7 +745,7 @@
           </li>
 
           <li class="tl-item tl-item--goal" data-start="21:00" data-end="22:00">
-            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg></div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-deer"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
               <h3 class="tl-title">天王寺到着・解散</h3>
@@ -762,9 +820,20 @@
         <p class="check-progress" id="checkProgress"></p>
       </div>
     </section>
+    <section id="memo">
+      <div class="container">
+        <h2 class="section-title">メモ <span>NOTE</span></h2>
+        <div class="memo">
+          <label class="memo__label" for="memoText">寄りたいお店・気づいたことなど</label>
+          <textarea id="memoText" rows="6" placeholder="例：吊り橋の売店でこんにゃくを買う"></textarea>
+          <p class="memo__hint" id="memoHint">この端末のブラウザにだけ保存されます</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
+    <svg class="footer-deer" aria-hidden="true"><use href="#deer-buck"/></svg>
     <div class="seal">奈良<br>縦断</div>
     <p>いってらっしゃい！安全運転で素敵な一日を</p>
   </footer>
@@ -855,6 +924,14 @@
         });
       });
       renderProgress();
+
+      // メモ（この端末のブラウザに保存）
+      var MEMO_KEY = "nara-drive-memo";
+      var memo = document.getElementById("memoText");
+      try { memo.value = localStorage.getItem(MEMO_KEY) || ""; } catch (e) {}
+      memo.addEventListener("input", function () {
+        try { localStorage.setItem(MEMO_KEY, memo.value); } catch (e) {}
+      });
 
       // トップへ戻るボタン
       var toTop = document.getElementById("toTop");
