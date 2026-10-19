@@ -110,7 +110,6 @@
       position: absolute; bottom: 30px; left: -40px;
       font-size: 1.6rem;
       animation: drive 14s linear infinite;
-      transform: scaleX(-1);
     }
 
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -361,7 +360,15 @@
       font-size: .88rem;
       line-height: 1.6;
     }
-    .safety li span:first-child { flex: none; }
+    .safety li::before {
+      content: "";
+      flex: none;
+      width: 6px; height: 6px;
+      margin-top: .62em;
+      transform: rotate(45deg);
+      background: var(--gold);
+    }
+    .safety li span { min-width: 0; }
     .safety em { font-style: normal; color: #ffd2b8; font-weight: 700; }
 
     /* ---------- Checklist ---------- */
@@ -445,6 +452,30 @@
     }
     .to-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
 
+    /* ---------- Line icons ---------- */
+    .i {
+      width: 1em; height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+    }
+    .hero__car { color: rgba(255, 255, 255, .85); }
+    .stat__icon, .tl-icon { color: var(--matcha); }
+    .tl-item--spot .tl-icon, .point__icon { color: var(--shu); }
+    .tl-item--goal .tl-icon { color: #8a6a35; }
+    .tl-item.is-now .tl-icon { color: #fff; }
+    .safety h3 .i { font-size: 1.15em; }
+    .tl-highlights li { display: inline-flex; align-items: center; gap: .45em; }
+    .tl-highlights li::before {
+      content: "";
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--shu);
+    }
+
     /* ---------- Larger screens ---------- */
     @media (min-width: 640px) {
       .summary__card { grid-template-columns: repeat(4, 1fr); padding: 24px; }
@@ -463,12 +494,13 @@
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-car" viewBox="0 0 24 24"><path d="M3 13l2-5.2A2 2 0 0 1 6.9 6.5h10.2a2 2 0 0 1 1.9 1.3L21 13v4h-2.7M5.7 17H3v-4h18M9.3 17h5.4"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></symbol><symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 19l7-11 4 6 2.5-3.5L22 19z"/><path d="M7.2 10.8l1.8 1.4 1.7-1.4"/></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 16h20M4 8v11M20 8v11M4 8c3 6 13 6 16 0M8 12.4V16M12 13.5V16M16 12.4V16"/></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 18h18M6 15a6 6 0 0 1 12 0M12 4v3M4.9 7.9l1.5 1.5M19.1 7.9l-1.5 1.5M8 21h8"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-road" viewBox="0 0 24 24"><path d="M8 3L4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v1a5 5 0 0 0 10 0V3M7 21v-1a5 5 0 0 1 10 0v1M12 9v6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/></symbol><symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 8v9h18v-1.5a3 3 0 0 0-2.4-2.9L13 11.5 10 8.5 7 10 3 8zM3 17v2h18v-2M10.5 11.5l1-1M12.5 13l1-1"/></symbol><symbol id="i-jacket" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 5 3-2 5-2-1v11H8V10l-2 1-2-5zM12 6v15"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 20h20zM12 10v4M12 17h.01"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol></defs></svg>
 
   <!-- ===== Hero ===== -->
   <header class="hero" id="top">
     <div class="hero__sun" aria-hidden="true"></div>
     <div class="container hero__inner">
-      <span class="hero__label">🚗 NARA DAY DRIVE</span>
+      <span class="hero__label">NARA DAY DRIVE</span>
       <h1 class="hero__title">
         <small>奈良縦断！</small>
         芸術の森 <span class="amp">&amp;</span><br>谷瀬の吊り橋ドライブ
@@ -495,7 +527,7 @@
         <path d="M0 132 Q100 124 200 132 T400 130 V140 H0Z" fill="#f7f3ea"/>
       </svg>
     </div>
-    <div class="hero__car" aria-hidden="true">🚗</div>
+    <div class="hero__car" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
   </header>
 
   <main>
@@ -503,35 +535,35 @@
     <div class="container summary">
       <div class="summary__card">
         <div class="stat">
-          <div class="stat__icon">⏰</div>
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></div>
           <div>
             <div class="stat__label">集合</div>
             <div class="stat__value">10:00</div>
           </div>
         </div>
         <div class="stat">
-          <div class="stat__icon">📍</div>
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></div>
           <div>
             <div class="stat__label">集合場所</div>
             <div class="stat__value">天王寺</div>
           </div>
         </div>
         <div class="stat">
-          <div class="stat__icon">🛣️</div>
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
           <div>
             <div class="stat__label">走行距離</div>
             <div class="stat__value">約250km</div>
           </div>
         </div>
         <div class="stat">
-          <div class="stat__icon">⌛</div>
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-hourglass"/></svg></div>
           <div>
             <div class="stat__label">総移動時間</div>
             <div class="stat__value">約5時間</div>
           </div>
         </div>
         <a class="route-btn" id="routeBtn" target="_blank" rel="noopener">
-          🗺️ 全ルートをGoogleマップで見る
+          <svg class="i" aria-hidden="true"><use href="#i-map"/></svg> 全ルートをGoogleマップで見る
         </a>
       </div>
     </div>
@@ -548,84 +580,84 @@
 
         <ol class="timeline" id="timeline">
           <li class="tl-item tl-item--start" data-start="10:00" data-end="10:15">
-            <div class="tl-icon">🚗</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">10:00</span><span class="tl-tag">START</span>
               <h3 class="tl-title">天王寺を出発</h3>
               <p class="tl-text">天王寺で合流。西名阪道などを経由して宇陀市へドライブ！</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85">📍 集合場所</a>
+                   href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 集合場所</a>
               </div>
             </div>
           </li>
 
           <li class="tl-item tl-item--spot" data-start="11:15" data-end="13:00">
-            <div class="tl-icon">🎨</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">11:15 〜 13:00</span><span class="tl-tag">宇陀市</span>
-              <h3 class="tl-title">室生山上公園 芸術の森 ＆ 軽めのごはん 🍱</h3>
+              <h3 class="tl-title">室生山上公園 芸術の森 ＆ 軽めのごはん</h3>
               <p class="tl-text">自然とアートが融合した野外ミュージアムを散策。園内または道中でランチ。</p>
               <ul class="tl-highlights">
-                <li>🌿 野外アート</li>
-                <li>📸 フォトスポット</li>
-                <li>🍙 ランチ</li>
+                <li>野外アート</li>
+                <li>フォトスポット</li>
+                <li>ランチ</li>
               </ul>
               <div class="tl-actions">
                 <a class="btn btn--accent" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE">📍 地図を開く</a>
+                   href="https://www.google.com/maps/search/?api=1&query=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 地図を開く</a>
                 <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&destination=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&travelmode=driving">🚗 ここまでのルート</a>
+                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&destination=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ここまでのルート</a>
               </div>
             </div>
           </li>
 
           <li class="tl-item tl-item--move" data-start="13:00" data-end="15:00">
-            <div class="tl-icon">⛰️</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">13:00 〜 15:00</span><span class="tl-tag">約2時間</span>
               <h3 class="tl-title">十津川村へ大移動</h3>
               <p class="tl-text">奈良の山あいを抜けて南部・十津川村へ。カーブの多い山道、運転交代や休憩もこまめに。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&travelmode=driving">🚗 ルートを確認</a>
+                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ルートを確認</a>
               </div>
             </div>
           </li>
 
           <li class="tl-item tl-item--spot" data-start="15:00" data-end="16:15">
-            <div class="tl-icon">🌉</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bridge"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">15:00 〜 16:15</span><span class="tl-tag">十津川村</span>
               <h3 class="tl-title">谷瀬の吊り橋 ＆ 絶景ブレイク</h3>
               <p class="tl-text">高さ54m・日本屈指の巨大な吊り橋でスリルと絶景を満喫。名物こんにゃく等でひと休み。</p>
               <ul class="tl-highlights">
-                <li>🌉 高さ54m</li>
-                <li>🏞️ 絶景</li>
-                <li>🍢 名物こんにゃく</li>
+                <li>高さ54m</li>
+                <li>絶景</li>
+                <li>名物こんにゃく</li>
               </ul>
               <div class="tl-actions">
                 <a class="btn btn--accent" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B">📍 地図を開く</a>
+                   href="https://www.google.com/maps/search/?api=1&query=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 地図を開く</a>
               </div>
             </div>
           </li>
 
           <li class="tl-item tl-item--move" data-start="16:15" data-end="18:10">
-            <div class="tl-icon">🌇</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-sunset"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">16:15 〜 18:10</span><span class="tl-tag">約1時間50分</span>
               <h3 class="tl-title">天王寺へ帰路</h3>
               <p class="tl-text">安全第一で大阪へ戻ります。夕方は疲れが出やすい時間帯、無理せず休憩を。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&travelmode=driving">🚗 帰りのルート</a>
+                   href="https://www.google.com/maps/dir/?api=1&origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> 帰りのルート</a>
               </div>
             </div>
           </li>
 
           <li class="tl-item tl-item--goal" data-start="18:10" data-end="19:00">
-            <div class="tl-icon">🏁</div>
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">18:10頃</span><span class="tl-tag">GOAL</span>
               <h3 class="tl-title">天王寺到着・解散</h3>
@@ -642,21 +674,21 @@
         <h2 class="section-title">旅のポイント＆メモ <span>MEMO</span></h2>
         <div class="points">
           <div class="point">
-            <div class="point__icon">🛣️</div>
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
             <div>
               <h3>本格ロングドライブ</h3>
               <p>総移動時間 <strong>約5時間</strong>、走行距離 <strong>約250km</strong>。運転手さんの負担を全員でフォロー！</p>
             </div>
           </div>
           <div class="point">
-            <div class="point__icon">👟</div>
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-shoe"/></svg></div>
             <div>
               <h3>動きやすい靴で</h3>
               <p>芸術の森の散策と吊り橋は歩きます。ヒールやサンダルは避けて。</p>
             </div>
           </div>
           <div class="point">
-            <div class="point__icon">🧥</div>
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-jacket"/></svg></div>
             <div>
               <h3>羽織るものを</h3>
               <p>山間部は市街地より気温が低め。夕方に向けて冷えるので一枚あると安心です。</p>
@@ -671,14 +703,14 @@
       <div class="container">
         <h2 class="section-title">ドライブ注意事項 <span>SAFETY</span></h2>
         <div class="safety">
-          <h3>⚠️ 長距離運転・安全運転のために</h3>
+          <h3><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg> 長距離運転・安全運転のために</h3>
           <ul>
-            <li><span>☕</span><span><em>2時間に1回</em>を目安に、道の駅やSA・PAでこまめに休憩しましょう。</span></li>
-            <li><span>🔁</span><span>運転交代ができる場合は無理せず交代を。眠気を感じたらすぐ休憩。</span></li>
-            <li><span>⛰️</span><span>十津川方面は<em>カーブ・狭い道・落石</em>に注意。スピードは控えめに。</span></li>
-            <li><span>⛽</span><span>山間部はガソリンスタンドが少なめ。<em>出発前に満タン</em>にしておくと安心です。</span></li>
-            <li><span>📶</span><span>電波が入りにくい場所あり。ルートは事前にオフラインで確認を。</span></li>
-            <li><span>🌆</span><span>帰路は夕暮れ時。早めのライト点灯と、疲れによる注意力低下に気をつけて。</span></li>
+            <li><span><em>2時間に1回</em>を目安に、道の駅やSA・PAでこまめに休憩しましょう。</span></li>
+            <li><span>運転交代ができる場合は無理せず交代を。眠気を感じたらすぐ休憩。</span></li>
+            <li><span>十津川方面は<em>カーブ・狭い道・落石</em>に注意。スピードは控えめに。</span></li>
+            <li><span>山間部はガソリンスタンドが少なめ。<em>出発前に満タン</em>にしておくと安心です。</span></li>
+            <li><span>電波が入りにくい場所あり。ルートは事前にオフラインで確認を。</span></li>
+            <li><span>帰路は夕暮れ時。早めのライト点灯と、疲れによる注意力低下に気をつけて。</span></li>
           </ul>
         </div>
       </div>
@@ -689,12 +721,12 @@
       <div class="container">
         <h2 class="section-title">持ち物チェック <span>CHECK</span></h2>
         <ul class="checklist" id="checklistItems">
-          <li><label><input type="checkbox" value="shoes"><span class="checkbox"></span><span class="check-text">👟 動きやすい靴</span></label></li>
-          <li><label><input type="checkbox" value="jacket"><span class="checkbox"></span><span class="check-text">🧥 羽織るもの（山間部用）</span></label></li>
-          <li><label><input type="checkbox" value="license"><span class="checkbox"></span><span class="check-text">🪪 運転免許証</span></label></li>
-          <li><label><input type="checkbox" value="drink"><span class="checkbox"></span><span class="check-text">🥤 飲み物・眠気覚ましのおやつ</span></label></li>
-          <li><label><input type="checkbox" value="battery"><span class="checkbox"></span><span class="check-text">🔋 モバイルバッテリー</span></label></li>
-          <li><label><input type="checkbox" value="cash"><span class="checkbox"></span><span class="check-text">💴 現金（駐車場・売店用）</span></label></li>
+          <li><label><input type="checkbox" value="shoes"><span class="checkbox"></span><span class="check-text">動きやすい靴</span></label></li>
+          <li><label><input type="checkbox" value="jacket"><span class="checkbox"></span><span class="check-text">羽織るもの（山間部用）</span></label></li>
+          <li><label><input type="checkbox" value="license"><span class="checkbox"></span><span class="check-text">運転免許証</span></label></li>
+          <li><label><input type="checkbox" value="drink"><span class="checkbox"></span><span class="check-text">飲み物・眠気覚ましのおやつ</span></label></li>
+          <li><label><input type="checkbox" value="battery"><span class="checkbox"></span><span class="check-text">モバイルバッテリー</span></label></li>
+          <li><label><input type="checkbox" value="cash"><span class="checkbox"></span><span class="check-text">現金（駐車場・売店用）</span></label></li>
         </ul>
         <p class="check-progress" id="checkProgress"></p>
       </div>
@@ -703,10 +735,10 @@
 
   <footer>
     <div class="seal">奈良<br>縦断</div>
-    <p>いってらっしゃい！安全運転で素敵な一日を 🚗💨</p>
+    <p>いってらっしゃい！安全運転で素敵な一日を</p>
   </footer>
 
-  <button class="to-top" id="toTop" aria-label="ページの先頭へ戻る">↑</button>
+  <button class="to-top" id="toTop" aria-label="ページの先頭へ戻る"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></button>
 
   <script>
     (function () {
@@ -759,7 +791,7 @@
         });
         // 移動の合間（10:15〜11:15）は次のスポットへ向かう途中
         if (!current && now >= toMin("10:15") && now < toMin("11:15")) {
-          text.textContent = "いまココ：芸術の森へ向かってドライブ中 🚗";
+          text.textContent = "いまココ：芸術の森へ向かってドライブ中";
           bar.classList.add("is-visible");
         } else if (current) {
           text.textContent = "いまココ：" + current.querySelector(".tl-title").textContent.trim();
@@ -781,7 +813,7 @@
         var done = 0;
         boxes.forEach(function (b) { if (b.checked) done++; });
         document.getElementById("checkProgress").textContent =
-          done === boxes.length ? "準備OK！出発しましょう 🎉" : done + " / " + boxes.length + " 準備完了";
+          done === boxes.length ? "準備OK！出発しましょう" : done + " / " + boxes.length + " 準備完了";
       }
       boxes.forEach(function (b) {
         b.checked = !!saved[b.value];
