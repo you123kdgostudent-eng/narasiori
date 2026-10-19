@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
   <style>
     :root {
       /* 奈良の伝統色：松葉の深緑・若草色・朱・柿渋・墨・生成り */
@@ -224,11 +225,7 @@
       position: relative;
       padding-left: 62px;
       margin-bottom: 22px;
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .6s ease, transform .6s ease;
     }
-    .tl-item.is-shown { opacity: 1; transform: none; }
     .tl-icon {
       position: absolute; left: 0; top: 4px;
       width: 48px; height: 48px;
@@ -258,7 +255,7 @@
     }
     .tl-item.is-now .tl-card { border: 2px solid var(--shu); box-shadow: 0 8px 28px rgba(217, 83, 79, .18); }
     .tl-item.is-now .tl-icon { background: var(--shu); border-color: var(--shu); }
-    .tl-item.is-done { opacity: .55; }
+    .tl-item.is-done .tl-card, .tl-item.is-done .tl-icon { opacity: .55; }
 
     .tl-time {
       display: inline-block;
@@ -530,6 +527,21 @@
       mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
     }
 
+    /* ---------- スクロールでふわっと表示 ----------
+       1. 最初は透明＋30px下に置いておく
+       2. 画面に入ったらJSが .is-show を付ける
+       3. .is-show が付くと、元の位置へ滑らかに戻る
+       ※ .js クラスはJSが動くときだけ付くので、JSが無効でも内容は見えます */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .js .reveal.is-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ---------- Larger screens ---------- */
     @media (min-width: 640px) {
       .summary__card { grid-template-columns: repeat(4, 1fr); padding: 24px; }
@@ -543,7 +555,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .tl-item { opacity: 1; transform: none; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -591,7 +603,7 @@
   <main>
     <!-- ===== Summary ===== -->
     <div class="container summary">
-      <div class="summary__card">
+      <div class="summary__card reveal">
         <div class="stat">
           <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></div>
           <div>
@@ -629,7 +641,7 @@
     <!-- ===== Schedule ===== -->
     <section id="schedule">
       <div class="container">
-        <h2 class="section-title">タイムスケジュール <span>SCHEDULE</span></h2>
+        <h2 class="section-title reveal">タイムスケジュール <span>SCHEDULE</span></h2>
 
         <div class="nowbar" id="nowbar" role="status">
           <span class="nowbar__dot"></span>
@@ -637,7 +649,7 @@
         </div>
 
         <ol class="timeline" id="timeline">
-          <li class="tl-item tl-item--start" data-start="10:00" data-end="10:15">
+          <li class="tl-item reveal tl-item--start" data-start="10:00" data-end="10:15">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">10:00</span><span class="tl-tag">START</span>
@@ -650,7 +662,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--spot" data-start="11:15" data-end="13:30">
+          <li class="tl-item reveal tl-item--spot" data-start="11:15" data-end="13:30">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">11:15 〜 13:30</span><span class="tl-tag">宇陀市</span>
@@ -670,7 +682,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--move" data-start="13:30" data-end="15:30">
+          <li class="tl-item reveal tl-item--move" data-start="13:30" data-end="15:30">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">13:30 〜 15:30</span><span class="tl-tag">約2時間</span>
@@ -683,7 +695,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--spot" data-start="15:30" data-end="17:00">
+          <li class="tl-item reveal tl-item--spot" data-start="15:30" data-end="17:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bridge"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">15:30 〜 17:00</span><span class="tl-tag">十津川村</span>
@@ -701,7 +713,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--move" data-start="17:00" data-end="18:15">
+          <li class="tl-item reveal tl-item--move" data-start="17:00" data-end="18:15">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-sunset"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">17:00 〜 18:15</span><span class="tl-tag">約1時間15分</span>
@@ -714,7 +726,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--spot" data-start="18:15" data-end="19:45">
+          <li class="tl-item reveal tl-item--spot" data-start="18:15" data-end="19:45">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bowl"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">18:15 〜 19:45</span><span class="tl-tag">五條・橿原あたり</span>
@@ -731,7 +743,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--move" data-start="19:45" data-end="21:00">
+          <li class="tl-item reveal tl-item--move" data-start="19:45" data-end="21:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">19:45 〜 21:00</span><span class="tl-tag">約1時間15分</span>
@@ -744,7 +756,7 @@
             </div>
           </li>
 
-          <li class="tl-item tl-item--goal" data-start="21:00" data-end="22:00">
+          <li class="tl-item reveal tl-item--goal" data-start="21:00" data-end="22:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-deer"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
@@ -759,23 +771,23 @@
     <!-- ===== Points ===== -->
     <section id="points">
       <div class="container">
-        <h2 class="section-title">旅のポイント＆メモ <span>MEMO</span></h2>
+        <h2 class="section-title reveal">旅のポイント＆メモ <span>MEMO</span></h2>
         <div class="points">
-          <div class="point">
+          <div class="point reveal">
             <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
             <div>
               <h3>本格ロングドライブ</h3>
               <p>総移動時間 <strong>約5時間半</strong>、走行距離 <strong>約250km</strong>。運転手さんの負担を全員でフォロー！</p>
             </div>
           </div>
-          <div class="point">
+          <div class="point reveal">
             <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-shoe"/></svg></div>
             <div>
               <h3>動きやすい靴で</h3>
               <p>芸術の森の散策と吊り橋は歩きます。ヒールやサンダルは避けて。</p>
             </div>
           </div>
-          <div class="point">
+          <div class="point reveal">
             <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-jacket"/></svg></div>
             <div>
               <h3>羽織るものを</h3>
@@ -789,8 +801,8 @@
     <!-- ===== Safety ===== -->
     <section id="safety">
       <div class="container">
-        <h2 class="section-title">ドライブ注意事項 <span>SAFETY</span></h2>
-        <div class="safety">
+        <h2 class="section-title reveal">ドライブ注意事項 <span>SAFETY</span></h2>
+        <div class="safety reveal">
           <h3><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg> 長距離運転・安全運転のために</h3>
           <ul>
             <li><span><em>2時間に1回</em>を目安に、道の駅やSA・PAでこまめに休憩しましょう。</span></li>
@@ -808,8 +820,8 @@
     <!-- ===== Checklist ===== -->
     <section id="checklist">
       <div class="container">
-        <h2 class="section-title">持ち物チェック <span>CHECK</span></h2>
-        <ul class="checklist" id="checklistItems">
+        <h2 class="section-title reveal">持ち物チェック <span>CHECK</span></h2>
+        <ul class="checklist reveal" id="checklistItems">
           <li><label><input type="checkbox" value="shoes"><span class="checkbox"></span><span class="check-text">動きやすい靴</span></label></li>
           <li><label><input type="checkbox" value="jacket"><span class="checkbox"></span><span class="check-text">羽織るもの（山間部用）</span></label></li>
           <li><label><input type="checkbox" value="license"><span class="checkbox"></span><span class="check-text">運転免許証</span></label></li>
@@ -822,8 +834,8 @@
     </section>
     <section id="memo">
       <div class="container">
-        <h2 class="section-title">メモ <span>NOTE</span></h2>
-        <div class="memo">
+        <h2 class="section-title reveal">メモ <span>NOTE</span></h2>
+        <div class="memo reveal">
           <label class="memo__label" for="memoText">寄りたいお店・気づいたことなど</label>
           <textarea id="memoText" rows="6" placeholder="例：吊り橋の売店でこんにゃくを買う"></textarea>
           <p class="memo__hint" id="memoHint">この端末のブラウザにだけ保存されます</p>
@@ -856,20 +868,23 @@
         "&travelmode=driving";
 
       // スクロールでふわっと表示
-      var items = document.querySelectorAll(".tl-item");
+      // 画面に入った要素に .is-show を付けます。同時に入った要素は 0.12 秒ずつずらして順番に表示。
+      var revealItems = document.querySelectorAll(".reveal");
       if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.classList.add("is-shown");
-              io.unobserve(e.target);
-            }
+        var observer = new IntersectionObserver(function (entries) {
+          var order = 0;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.style.transitionDelay = (order * 0.12) + "s";
+            entry.target.classList.add("is-show");
+            observer.unobserve(entry.target); // 一度表示したら監視をやめる
+            order++;
           });
-        }, { threshold: 0.15 });
-        items.forEach(function (el) { io.observe(el); });
-      } else {
-        items.forEach(function (el) { el.classList.add("is-shown"); });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        revealItems.forEach(function (el) { observer.observe(el); });
       }
+
+      var items = document.querySelectorAll(".tl-item");
 
       // 現在時刻に合わせて「いまココ」をハイライト
       function toMin(hm) {
