@@ -191,44 +191,46 @@
       box-shadow: var(--shadow);
       padding: 20px 18px;
     }
-    .daybar {
-      display: flex;
-      gap: 2px;
-      height: 14px;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-    .seg--drive { background: var(--matcha); }
-    .seg--spot { background: var(--shu); }
-    .seg--meal { background: var(--gold); }
-    .daybar__ticks {
-      position: relative;
-      height: 1.6em;
-      margin-top: 6px;
-      font-size: .72rem;
-      color: var(--ink-soft);
-      font-variant-numeric: tabular-nums;
-    }
-    .daybar__ticks span { position: absolute; top: 0; transform: translateX(-50%); }
-    .daybar__ticks span:first-child { transform: none; }
-    .daybar__ticks span:last-child { transform: translateX(-100%); }
-    .legend {
-      list-style: none;
-      margin: 12px 0 0; padding: 0;
-      display: flex; flex-wrap: wrap; gap: 6px 16px;
-      font-size: .8rem;
-      color: var(--ink-soft);
-    }
-    .legend li { display: inline-flex; align-items: center; gap: 6px; }
-    .legend b { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
-    .legend__key { width: 12px; height: 12px; border-radius: 3px; }
+    .routemap { display: grid; gap: 12px; justify-items: center; }
+    .routemap__svg { width: 100%; max-width: 420px; height: auto; }
+    .rm-bg { fill: var(--wakakusa-soft); }
+    .rm-mtn path { fill: none; stroke: var(--moss); stroke-width: 1.4; stroke-linejoin: round; }
+    .rm-compass path { fill: var(--shu); }
+    .rm-compass text, .rm-area { font-family: var(--font-serif); font-size: 11px; fill: var(--ink-soft); letter-spacing: .1em; }
+    .rm-road { fill: none; stroke: var(--paper); stroke-width: 9; stroke-linecap: round; }
+    .rm-route { fill: none; stroke: var(--matcha); stroke-width: 3.5; stroke-linecap: round; }
+    .rm-chip rect { fill: var(--paper); stroke: var(--line); }
+    .rm-chip text { font-size: 10px; fill: var(--matcha); font-weight: 700; }
+    .rm-pin__halo { fill: var(--shu); opacity: .18; }
+    .rm-pin__dot { fill: var(--shu); stroke: var(--paper); stroke-width: 2.5; }
+    .rm-pin[data-pin="0"] .rm-pin__dot { fill: var(--matcha); }
+    .rm-pin[data-pin="0"] .rm-pin__halo { fill: var(--matcha); }
+    .rm-name { font-family: var(--font-serif); font-weight: 700; font-size: 13.5px; fill: var(--matcha-deep); }
+    .rm-time { font-size: 10.5px; fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .rm-car circle { fill: var(--paper); stroke: var(--shu); stroke-width: 2; }
+    .rm-car use { fill: none; stroke: var(--shu); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .rm-pin, .rm-chip { transition: opacity .5s ease, transform .5s cubic-bezier(.3, 1.6, .5, 1); transform-box: fill-box; transform-origin: center; }
+    .routemap.is-playing .rm-pin:not(.is-on), .routemap.is-playing .rm-chip:not(.is-on) { opacity: 0; transform: scale(.4); }
+    .rm-chip.is-on, .rm-pin.is-on { transform: none; }
+    .rm-pin.is-on .rm-pin__halo { animation: halo 1.2s ease-out 1; transform-box: fill-box; transform-origin: center; }
+    @keyframes halo { from { transform: scale(.6); opacity: .6; } to { transform: scale(1.8); opacity: .18; } }
+    .routemap__replay { font-size: .78rem; }
+
     .flow-steps {
       list-style: none;
       margin: 18px 0 0; padding: 16px 0 0;
       border-top: 1px solid var(--line);
       display: grid; gap: 14px;
     }
-    .flow-steps li { display: flex; gap: 14px; align-items: flex-start; }
+    .flow-steps li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 8px 10px;
+      margin: -8px -10px;
+      border-radius: 12px;
+      transition: background .4s ease;
+    }
+    .flow-steps li.is-active { background: var(--wakakusa-soft); }
+    .flow-steps li.is-active .flow-steps__when { background: var(--matcha); color: var(--paper); border-color: var(--matcha); }
     .flow-steps li > div { min-width: 0; }
     .flow-steps__when {
       flex: none;
@@ -240,6 +242,7 @@
       color: var(--matcha);
       background: var(--wakakusa-soft);
       border: 1px solid var(--moss);
+      transition: background .4s ease, color .4s ease;
     }
     .flow-steps strong { display: block; font-family: var(--font-serif); color: var(--matcha-deep); font-size: 1rem; }
     .flow-steps p { margin: 0; font-size: .85rem; color: var(--ink-soft); }
@@ -703,27 +706,42 @@
       <div class="container">
         <h2 class="section-title reveal">1日の流れ <span>OVERVIEW</span></h2>
         <div class="flow reveal">
-          <div class="daybar" role="img" aria-label="10時から21時まで。運転 約5時間45分、観光 約3時間45分、夕ごはん 約1時間30分"><span class="seg seg--drive" style="flex: 75"></span><span class="seg seg--spot" style="flex: 135"></span><span class="seg seg--drive" style="flex: 120"></span><span class="seg seg--spot" style="flex: 90"></span><span class="seg seg--drive" style="flex: 75"></span><span class="seg seg--meal" style="flex: 90"></span><span class="seg seg--drive" style="flex: 75"></span></div>
-          <div class="daybar__ticks" aria-hidden="true"><span style="left: 0.00%">10:00</span><span style="left: 27.27%">13:00</span><span style="left: 54.55%">16:00</span><span style="left: 81.82%">19:00</span><span style="left: 100.00%">21:00</span></div>
-          <ul class="legend">
-            <li><span class="legend__key seg--drive"></span>運転<b>約5時間45分</b></li>
-            <li><span class="legend__key seg--spot"></span>観光<b>約3時間45分</b></li>
-            <li><span class="legend__key seg--meal"></span>夕ごはん<b>約1時間30分</b></li>
-          </ul>
+          <div class="routemap">
+            <svg class="routemap__svg" viewBox="0 0 320 340" role="img" aria-label="天王寺から芸術の森、谷瀬の吊り橋、五條を回って天王寺へ戻るルート">
+            <rect x="0" y="0" width="320" height="340" rx="14" class="rm-bg"/>
+            <g class="rm-mtn"><path d="M262 262l14-22 14 22zM280 262l16-26 16 26zM248 278l12-18 12 18z"/></g>
+            <g class="rm-compass" transform="translate(296 26)"><path d="M0-12L5 4 0 1-5 4z"/><text y="18" text-anchor="middle">N</text></g>
+            <text class="rm-area" x="18" y="322">大阪</text><text class="rm-area" x="310" y="296" text-anchor="end">十津川</text>
+            <path class="rm-road" d="M60 70C120 30 210 40 258 100"/><path class="rm-route" data-seg="0" d="M60 70C120 30 210 40 258 100"/>
+            <path class="rm-road" d="M258 100C290 160 255 225 175 290"/><path class="rm-route" data-seg="1" d="M258 100C290 160 255 225 175 290"/>
+            <path class="rm-road" d="M175 290C140 275 110 250 105 200"/><path class="rm-route" data-seg="2" d="M175 290C140 275 110 250 105 200"/>
+            <path class="rm-road" d="M105 200C100 150 50 120 60 70"/><path class="rm-route" data-seg="3" d="M105 200C100 150 50 120 60 70"/>
+            <g transform="translate(163 47)"><g class="rm-chip" data-chip="0"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g transform="translate(258 193)"><g class="rm-chip" data-chip="1"><rect x="-26.0" y="-9" width="52.0" height="18" rx="9"/><text text-anchor="middle" y="3.5">約2時間</text></g></g>
+            <g transform="translate(129 258)"><g class="rm-chip" data-chip="2"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g transform="translate(77 135)"><g class="rm-chip" data-chip="3"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g class="rm-pin" data-pin="0"><circle class="rm-pin__halo" cx="60" cy="70" r="11"/><circle class="rm-pin__dot" cx="60" cy="70" r="6"/><text class="rm-name" x="74" y="96" text-anchor="start">天王寺</text><text class="rm-time" x="74" y="110" text-anchor="start">10:00発・21:00着</text></g>
+            <g class="rm-pin" data-pin="1"><circle class="rm-pin__halo" cx="258" cy="100" r="11"/><circle class="rm-pin__dot" cx="258" cy="100" r="6"/><text class="rm-name" x="246" y="122" text-anchor="end">芸術の森</text><text class="rm-time" x="246" y="136" text-anchor="end">11:15〜13:30</text></g>
+            <g class="rm-pin" data-pin="2"><circle class="rm-pin__halo" cx="175" cy="290" r="11"/><circle class="rm-pin__dot" cx="175" cy="290" r="6"/><text class="rm-name" x="188" y="308" text-anchor="start">谷瀬の吊り橋</text><text class="rm-time" x="188" y="322" text-anchor="start">15:30〜17:00</text></g>
+            <g class="rm-pin" data-pin="3"><circle class="rm-pin__halo" cx="105" cy="200" r="11"/><circle class="rm-pin__dot" cx="105" cy="200" r="6"/><text class="rm-name" x="118" y="198" text-anchor="start">五條で夕ごはん</text><text class="rm-time" x="118" y="212" text-anchor="start">18:15〜19:45</text></g>
+            <g class="rm-car" id="routeCar" transform="translate(60 70)"><circle r="12"/><use href="#i-car" x="-8" y="-8" width="16" height="16"/></g>
+            </svg>
+            <button class="btn routemap__replay" id="routeReplay" type="button">もう一度ルートを再生</button>
+          </div>
           <ol class="flow-steps">
-            <li>
+            <li data-step="0">
               <span class="flow-steps__when">朝</span>
               <div><strong>天王寺 → 宇陀</strong><p>10:00に出発。芸術の森でアート散策とランチ</p></div>
             </li>
-            <li>
+            <li data-step="1">
               <span class="flow-steps__when">昼</span>
               <div><strong>宇陀 → 十津川</strong><p>山あいを約2時間南下して、谷瀬の吊り橋で絶景</p></div>
             </li>
-            <li>
+            <li data-step="2">
               <span class="flow-steps__when">夕</span>
               <div><strong>十津川 → 五條</strong><p>山を下りて、夕ごはんでゆっくりひと休み</p></div>
             </li>
-            <li>
+            <li data-step="3">
               <span class="flow-steps__when">夜</span>
               <div><strong>五條 → 天王寺</strong><p>21:00頃に到着・解散</p></div>
             </li>
@@ -979,6 +997,61 @@
       }
 
       var items = document.querySelectorAll(".tl-item");
+
+      // 1日の流れ：ルートを描きながら車を走らせる
+      var map = document.querySelector(".routemap");
+      var routes = map.querySelectorAll(".rm-route");
+      var pins = map.querySelectorAll(".rm-pin");
+      var chips = map.querySelectorAll(".rm-chip");
+      var steps = document.querySelectorAll(".flow-steps li");
+      var car = document.getElementById("routeCar");
+      var SEG_TIME = [1300, 1900, 1300, 1300]; // 区間ごとのアニメーション時間（実際の運転時間に比例）
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var playId = 0;
+
+      function moveCar(path, len) {
+        var pt = path.getPointAtLength(len);
+        car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+      }
+      function playRoute() {
+        var id = ++playId;
+        map.classList.add("is-playing");
+        pins.forEach(function (p, i) { p.classList.toggle("is-on", i === 0); });
+        chips.forEach(function (c) { c.classList.remove("is-on"); });
+        routes.forEach(function (r) {
+          var len = r.getTotalLength();
+          r.style.strokeDasharray = len;
+          r.style.strokeDashoffset = len;
+        });
+        (function runSeg(i) {
+          steps.forEach(function (st, k) { st.classList.toggle("is-active", k === i); });
+          if (i >= routes.length) return;
+          var path = routes[i], len = path.getTotalLength(), t0 = null;
+          function frame(ts) {
+            if (id !== playId) return; // 再生し直したら古いアニメーションは止める
+            if (t0 === null) t0 = ts;
+            var p = Math.min((ts - t0) / SEG_TIME[i], 1);
+            var e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ゆっくり出てゆっくり止まる
+            path.style.strokeDashoffset = len * (1 - e);
+            moveCar(path, len * e);
+            if (p < 1) { requestAnimationFrame(frame); return; }
+            chips[i].classList.add("is-on");
+            pins[(i + 1) % pins.length].classList.add("is-on");
+            setTimeout(function () { if (id === playId) runSeg(i + 1); }, 350);
+          }
+          requestAnimationFrame(frame);
+        })(0);
+      }
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        var mapObserver = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { playRoute(); mapObserver.disconnect(); }
+        }, { threshold: 0.4 });
+        mapObserver.observe(map);
+      }
+      document.getElementById("routeReplay").addEventListener("click", function () {
+        if (reduceMotion) return;
+        playRoute();
+      });
 
       // 現在時刻に合わせて「いまココ」をハイライト
       function toMin(hm) {
