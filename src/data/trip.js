@@ -15,11 +15,11 @@ const route = (origin, destination) =>
 const search = (query) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
-export const summary = [
-  { icon: "clock", label: "集合", value: "10:00" },
-  { icon: "pin", label: "集合場所", value: "天王寺" },
-  { icon: "road", label: "走行距離", value: "約250km" },
-  { icon: "hourglass", label: "総移動時間", value: "約5時間45分" },
+export const facts = [
+  { label: "集合", value: "10:00", note: "天王寺" },
+  { label: "解散", value: "21:00頃", note: "天王寺" },
+  { label: "走る距離", value: "約250km" },
+  { label: "運転", value: "約5時間45分" },
 ];
 
 // kind: start（出発） / spot（立ち寄り） / move（移動） / goal（解散）
@@ -92,20 +92,13 @@ export const routeMap = {
 };
 
 export const flowSteps = [
-  { when: "朝", title: "天王寺 → 宇陀", text: "10:00に出発。芸術の森でアート散策とランチ" },
+  { when: "朝", title: "天王寺 → 宇陀", text: "10:00出発。芸術の森でアートとランチ" },
   { when: "昼", title: "宇陀 → 十津川", text: "山あいを約2時間南下して、谷瀬の吊り橋で絶景" },
   { when: "夕", title: "十津川 → 五條", text: "山を下りて、夕ごはんでゆっくりひと休み" },
   { when: "夜", title: "五條 → 天王寺", text: "21:00頃に到着・解散" },
 ];
 
-export const points = [
-  {
-    icon: "road", title: "本格ロングドライブ",
-    body: ["総移動時間 ", { strong: "約5時間45分" }, "、走行距離 ", { strong: "約250km" }, "。運転手さんの負担を全員でフォロー！"],
-  },
-  { icon: "shoe", title: "動きやすい靴で", body: ["芸術の森の散策と吊り橋は歩きます。ヒールやサンダルは避けて。"] },
-  { icon: "jacket", title: "羽織るものを", body: ["山間部は市街地より気温が低め。夕方に向けて冷えるので一枚あると安心です。"] },
-];
+export const drivingNote = "山道を含めて約250km、運転は合計で約5時間45分。ひとりに任せきりにせず、交代しながら行こう。";
 
 // { em: "..." } の部分が強調表示になります
 export const safety = [
@@ -119,8 +112,8 @@ export const safety = [
 ];
 
 export const checklist = [
-  { id: "shoes", label: "動きやすい靴" },
-  { id: "jacket", label: "羽織るもの（山間部用）" },
+  { id: "shoes", label: "動きやすい靴", note: "芸術の森と吊り橋で歩きます" },
+  { id: "jacket", label: "羽織るもの", note: "山は夕方になると冷えます" },
   { id: "license", label: "運転免許証" },
   { id: "drink", label: "飲み物・眠気覚ましのおやつ" },
   { id: "battery", label: "モバイルバッテリー" },

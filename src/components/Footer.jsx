@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
     <footer>
-      <svg className="footer-deer" aria-hidden="true"><use href="#deer-buck" /></svg>
-      <div className="seal">奈良<br />縦断</div>
-      <p>いってらっしゃい！安全運転で素敵な一日を</p>
+      <svg className="footer-deer" aria-hidden="true"><use href="#deer-doe" /></svg>
+      <p>21:00頃、天王寺で解散。</p>
+      <p className="footer__sub">帰り道も気をつけて。</p>
     </footer>
   );
 }

@@ -11,7 +11,7 @@ export default function Checklist() {
   return (
     <section id="checklist">
       <div className="container">
-        <SectionTitle en="CHECK">持ち物チェック</SectionTitle>
+        <SectionTitle>持ち物</SectionTitle>
         <Reveal as="ul" className="checklist">
           {checklist.map((item) => (
             <li key={item.id}>
@@ -23,13 +23,16 @@ export default function Checklist() {
                   onChange={(e) => setChecked({ ...checked, [item.id]: e.target.checked })}
                 />
                 <span className="checkbox" />
-                <span className="check-text">{item.label}</span>
+                <span className="check-text">
+                  {item.label}
+                  {item.note && <small>{item.note}</small>}
+                </span>
               </label>
             </li>
           ))}
         </Reveal>
         <p className="check-progress">
-          {done === checklist.length ? "準備OK！出発しましょう" : `${done} / ${checklist.length} 準備完了`}
+          {done === checklist.length ? "全部そろいました" : `${checklist.length}つ中 ${done}つ準備済み`}
         </p>
       </div>
     </section>

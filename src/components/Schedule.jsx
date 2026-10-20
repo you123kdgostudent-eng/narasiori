@@ -30,7 +30,7 @@ export default function Schedule() {
   return (
     <section id="schedule">
       <div className="container">
-        <SectionTitle en="SCHEDULE">タイムスケジュール</SectionTitle>
+        <SectionTitle>タイムスケジュール</SectionTitle>
 
         {nowText && (
           <div className="nowbar is-visible" role="status">
