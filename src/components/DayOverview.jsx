@@ -11,7 +11,7 @@ export default function DayOverview() {
   return (
     <section id="flow">
       <div className="container">
-        <SectionTitle en="OVERVIEW">1日の流れ</SectionTitle>
+        <SectionTitle en="ROUTE MAP">1日の流れ</SectionTitle>
         <Reveal className="flow">
           <RouteMap onStepChange={setActiveStep} />
           <ol className="flow-steps">

@@ -23,53 +23,53 @@ export const summary = [
 ];
 
 // kind: start（出発） / spot（立ち寄り） / move（移動） / goal（解散）
-// start・end は「いまココ」表示に使う時刻です
+// start・end はコマ図の時刻と「いまココ」表示に使います（goal は start のみ表示）
 export const schedule = [
   {
     kind: "start", start: "10:00", end: "10:15", icon: "car",
-    time: "10:00", tag: "START",
+    tag: "START",
     title: "天王寺を出発", text: "天王寺で合流。西名阪道で宇陀市へ。",
     link: { href: route(TENNOJI, ART_FOREST), icon: "map", label: "ルート" },
   },
   {
     kind: "spot", start: "11:15", end: "13:30", icon: "palette",
-    time: "11:15〜13:30", tag: "宇陀市",
-    title: "芸術の森 ＆ 軽めのごはん", text: "室生山上公園で野外アート散策とランチ。",
+    tag: "宇陀市",
+    title: "芸術の森 ＆ 軽めのごはん", text: "室生山上公園で野外アートとランチ。",
     link: { href: search(ART_FOREST), icon: "pin", label: "地図" },
   },
   {
     kind: "move", start: "13:30", end: "15:30", icon: "mountain",
-    time: "13:30〜15:30", tag: "約2時間",
+    tag: "約2時間",
     title: "十津川村へ大移動",
     link: { href: route(ART_FOREST, TANIZE), icon: "map", label: "ルート" },
   },
   {
     kind: "spot", start: "15:30", end: "17:00", icon: "bridge",
-    time: "15:30〜17:00", tag: "十津川村",
+    tag: "十津川村",
     title: "谷瀬の吊り橋 ＆ 絶景ブレイク", text: "高さ54m。名物こんにゃくでひと休み。",
     link: { href: search(TANIZE), icon: "pin", label: "地図" },
   },
   {
     kind: "move", start: "17:00", end: "18:15", icon: "sunset",
-    time: "17:00〜18:15", tag: "約1時間15分",
+    tag: "約1時間15分",
     title: "五條方面へ山を下りる",
     link: { href: route(TANIZE, GOJO), icon: "map", label: "ルート" },
   },
   {
     kind: "spot", start: "18:15", end: "19:45", icon: "bowl",
-    time: "18:15〜19:45", tag: "五條・橿原",
+    tag: "五條・橿原",
     title: "帰り道で夕ごはん", text: "お店は当日の気分で決めよう。",
     link: { href: search("五條市 夕食"), icon: "pin", label: "お店" },
   },
   {
     kind: "move", start: "19:45", end: "21:00", icon: "car",
-    time: "19:45〜21:00", tag: "約1時間15分",
+    tag: "約1時間15分",
     title: "天王寺へ帰路",
     link: { href: route(GOJO, TENNOJI), icon: "map", label: "ルート" },
   },
   {
     kind: "goal", start: "21:00", end: "22:00", icon: "deer",
-    time: "21:00頃", tag: "GOAL",
+    tag: "GOAL",
     title: "天王寺到着・解散",
   },
 ];

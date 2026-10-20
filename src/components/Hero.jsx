@@ -1,45 +1,72 @@
 import Icon from "./Icon";
+import DeerSign from "./DeerSign";
+
+// 国道の「おにぎり」型ルート番号
+function RouteShield({ number }) {
+  return (
+    <svg className="shield" viewBox="0 0 40 36" aria-label={`国道${number}号`}>
+      <path d="M2 2h36v14c0 9-8 15-18 18C10 31 2 25 2 16z" className="shield__body" />
+      <text x="20" y="21" textAnchor="middle" className="shield__num">{number}</text>
+    </svg>
+  );
+}
+
+// 案内標識の矢印（直進・右斜め上）
+function SignArrow({ turn }) {
+  return (
+    <svg className="sign-arrow" viewBox="0 0 32 40" aria-hidden="true">
+      <g transform={turn ? "rotate(35 16 24)" : undefined}>
+        <path d="M16 2L4 16h8v22h8V16h8z" />
+      </g>
+    </svg>
+  );
+}
 
 export default function Hero() {
   return (
     <header className="hero" id="top">
-      <div className="hero__sun" aria-hidden="true" />
-      <div className="container hero__inner">
-        <span className="hero__label">NARA DAY DRIVE</span>
-        <h1 className="hero__title">
-          <small>奈良縦断！</small>
-          芸術の森 <span className="amp">&amp;</span>
-          <br />
-          谷瀬の吊り橋ドライブ
-        </h1>
-        <p className="hero__sub">よくばり日帰りドライブしおり</p>
+      <p className="hero__eyebrow">NARA DAY DRIVE ／ 日帰りドライブしおり</p>
+
+      <div className="signpost">
+        <div className="guide-sign">
+          <div className="guide-sign__shields">
+            <span className="expressway">西名阪道</span>
+            <RouteShield number="168" />
+          </div>
+          <h1 className="guide-sign__title">
+            <span className="guide-sign__lead">奈良縦断！</span>
+            <span className="guide-sign__row">
+              <SignArrow />
+              <span className="guide-sign__dest">
+                <span className="ja">芸術の森</span>
+                <span className="en">Art Forest</span>
+              </span>
+              <span className="guide-sign__area">宇陀</span>
+            </span>
+            <span className="guide-sign__row">
+              <SignArrow turn />
+              <span className="guide-sign__dest">
+                <span className="ja">谷瀬の吊り橋</span>
+                <span className="en">Tanize Suspension Bridge</span>
+              </span>
+              <span className="guide-sign__area">十津川</span>
+            </span>
+          </h1>
+          <p className="guide-sign__foot">芸術の森 &amp; 谷瀬の吊り橋ドライブ</p>
+        </div>
       </div>
 
-      <div className="hero__mountains" aria-hidden="true">
-        <svg viewBox="0 0 400 140" preserveAspectRatio="none">
-          <path d="M0 70 L40 40 L80 62 L130 22 L180 58 L220 34 L270 66 L320 28 L370 56 L400 44 V140 H0Z" fill="#5b7a69" opacity=".55" />
-          <path d="M0 96 L50 66 L95 88 L150 56 L205 90 L255 62 L300 92 L350 70 L400 86 V140 H0Z" fill="#3d5e4f" opacity=".85" />
-          {/* 吊り橋のシルエット */}
-          <g stroke="#f7f3ea" strokeWidth="1.2" fill="none" opacity=".75">
-            <path d="M150 94 Q205 120 260 94" />
-            <line x1="150" y1="84" x2="150" y2="104" />
-            <line x1="260" y1="84" x2="260" y2="104" />
-            <line x1="150" y1="104" x2="260" y2="104" />
-            <line x1="172" y1="101" x2="172" y2="104" />
-            <line x1="194" y1="105" x2="194" y2="104" />
-            <line x1="216" y1="105" x2="216" y2="104" />
-            <line x1="238" y1="101" x2="238" y2="104" />
-          </g>
-          <path d="M0 116 Q100 100 200 114 T400 110 V140 H0Z" fill="#2e4a3e" />
-          <path d="M0 132 Q100 124 200 132 T400 130 V140 H0Z" fill="#f7f3ea" />
+      <DeerSign className="hero__deer-sign" />
+
+      <div className="hero__ridge" aria-hidden="true">
+        <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+          <path d="M0 50L40 28 78 44 130 12 182 40 226 22 270 46 318 16 362 38 400 26V80H0z" className="ridge-far" />
+          <path d="M0 64L52 44 96 60 150 38 210 62 262 44 310 64 356 48 400 58V80H0z" className="ridge-near" />
         </svg>
       </div>
-
-      <div className="hero__deer" aria-hidden="true">
-        <svg className="deer deer--buck"><use href="#deer-buck" /></svg>
-        <svg className="deer deer--doe"><use href="#deer-doe" /></svg>
+      <div className="hero__road" aria-hidden="true">
+        <div className="hero__car"><Icon name="car" /></div>
       </div>
-      <div className="hero__car" aria-hidden="true"><Icon name="car" /></div>
     </header>
   );
 }
