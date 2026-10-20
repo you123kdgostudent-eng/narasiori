@@ -11,7 +11,7 @@ export default function Checklist() {
   return (
     <section id="checklist">
       <div className="container">
-        <SectionTitle en="PRE-DRIVE CHECK">出発前点検</SectionTitle>
+        <SectionTitle en="CHECK">持ち物チェック</SectionTitle>
         <Reveal as="ul" className="checklist">
           {checklist.map((item) => (
             <li key={item.id}>

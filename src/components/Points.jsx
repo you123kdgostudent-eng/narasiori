@@ -8,7 +8,7 @@ export default function Points() {
   return (
     <section id="points">
       <div className="container">
-        <SectionTitle en="POINTS">旅のポイント</SectionTitle>
+        <SectionTitle en="MEMO">旅のポイント＆メモ</SectionTitle>
         <div className="points">
           {points.map((point) => (
             <Reveal className="point" key={point.title}>

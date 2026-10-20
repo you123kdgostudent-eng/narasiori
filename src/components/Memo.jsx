@@ -8,7 +8,7 @@ export default function Memo() {
   return (
     <section id="memo">
       <div className="container">
-        <SectionTitle en="MEMO">メモ</SectionTitle>
+        <SectionTitle en="NOTE">メモ</SectionTitle>
         <Reveal className="memo">
           <label className="memo__label" htmlFor="memoText">寄りたいお店・気づいたことなど</label>
           <textarea

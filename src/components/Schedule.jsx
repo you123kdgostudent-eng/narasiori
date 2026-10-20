@@ -16,74 +16,63 @@ function useProgress() {
 
   const nowText =
     current !== -1
-      ? schedule[current].title
+      ? `いまココ：${schedule[current].title}`
       : drivingToArt
-        ? "芸術の森へ向かってドライブ中"
+        ? "いまココ：芸術の森へ向かってドライブ中"
         : null;
   const isDone = (item) => duringTrip && now >= toMinutes(item.end);
   return { current, nowText, isDone };
 }
 
-// 時刻欄：出発・解散は1つ、それ以外は開始と終了を縦に並べる
-function Times({ item }) {
-  if (item.kind === "start") return <span className="rb-time__main">{item.start}</span>;
-  if (item.kind === "goal") return <span className="rb-time__main">{item.start}<small>頃</small></span>;
-  return (
-    <>
-      <span className="rb-time__main">{item.start}</span>
-      <span className="rb-time__end">{item.end}</span>
-    </>
-  );
-}
-
-// ラリーのコマ図（ロードブック）風のタイムスケジュール
 export default function Schedule() {
   const { current, nowText, isDone } = useProgress();
 
   return (
     <section id="schedule">
       <div className="container">
-        <SectionTitle en="ROADBOOK">タイムスケジュール</SectionTitle>
+        <SectionTitle en="SCHEDULE">タイムスケジュール</SectionTitle>
 
         {nowText && (
-          <div className="nowbar" role="status">
-            <span className="nowbar__label">現在地</span>
+          <div className="nowbar is-visible" role="status">
+            <span className="nowbar__dot" />
             <span>{nowText}</span>
           </div>
         )}
 
-        <Reveal as="ol" className="roadbook">
+        <ol className="timeline">
           {schedule.map((item, i) => {
             const classes = [
-              "rb-row",
-              `rb-row--${item.kind}`,
+              "tl-item",
+              `tl-item--${item.kind}`,
               i === current && "is-now",
               isDone(item) && "is-done",
             ].filter(Boolean).join(" ");
             return (
-              <li key={item.start} className={classes}>
-                <div className="rb-time">
-                  <span className="rb-no">{String(i + 1).padStart(2, "0")}</span>
-                  <Times item={item} />
-                </div>
-                <div className="rb-diagram"><Icon name={item.icon} /></div>
-                <div className="rb-body">
-                  <div className="rb-meta">
-                    <span className="rb-tag">{item.tag}</span>
+              <Reveal as="li" key={item.start} className={classes}>
+                <div className="tl-icon"><Icon name={item.icon} /></div>
+                <div className="tl-card">
+                  <div className="tl-head">
+                    <span className="tl-time">{item.time}</span>
+                    <span className="tl-tag">{item.tag}</span>
                     {item.link && (
-                      <a className="rb-link" href={item.link.href} target="_blank" rel="noopener noreferrer">
+                      <a
+                        className={`tl-link${item.kind === "spot" ? " tl-link--accent" : ""}`}
+                        href={item.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Icon name={item.link.icon} />
                         {item.link.label}
                       </a>
                     )}
                   </div>
-                  <h3 className="rb-title">{item.title}</h3>
-                  {item.text && <p className="rb-text">{item.text}</p>}
+                  <h3 className="tl-title">{item.title}</h3>
+                  {item.text && <p className="tl-text">{item.text}</p>}
                 </div>
-              </li>
+              </Reveal>
             );
           })}
-        </Reveal>
+        </ol>
       </div>
     </section>
   );
