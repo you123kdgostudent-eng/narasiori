@@ -265,7 +265,7 @@
     .timeline::before {
       content: "";
       position: absolute;
-      left: 17px; top: 10px; bottom: 10px;
+      left: 12px; top: 10px; bottom: 10px;
       width: 14px;
       background: var(--moss);
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 28'%3E%3Cg fill='black'%3E%3Cellipse cx='2.7' cy='6' rx='1.3' ry='2.6' transform='rotate%28-10 2.7 6%29'/%3E%3Cellipse cx='5.5' cy='6' rx='1.3' ry='2.6' transform='rotate%2810 5.5 6%29'/%3E%3Cellipse cx='8.5' cy='20' rx='1.3' ry='2.6' transform='rotate%28-10 8.5 20%29'/%3E%3Cellipse cx='11.3' cy='20' rx='1.3' ry='2.6' transform='rotate%2810 11.3 20%29'/%3E%3C/g%3E%3C/svg%3E") repeat-y center / 14px 28px;
@@ -273,15 +273,15 @@
     }
     .tl-item {
       position: relative;
-      padding-left: 62px;
-      margin-bottom: 22px;
+      padding-left: 52px;
+      margin-bottom: 10px;
     }
     .tl-icon {
       position: absolute; left: 0; top: 4px;
-      width: 48px; height: 48px;
+      width: 38px; height: 38px;
       border-radius: 50%;
       display: grid; place-items: center;
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       background: var(--paper);
       border: 2px solid var(--moss);
       box-shadow: 0 3px 10px rgba(31, 52, 43, .12);
@@ -294,7 +294,7 @@
       background: var(--paper);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 16px 18px 18px;
+      padding: 10px 14px 12px;
       border: 1px solid transparent;
       transition: border-color .3s, box-shadow .3s;
     }
@@ -311,7 +311,7 @@
       display: inline-block;
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: .9rem;
       font-variant-numeric: tabular-nums;
       line-height: 1.6;
       color: #fff;
@@ -329,19 +329,32 @@
       border: 1px solid var(--moss);
       border-radius: 999px;
       padding: 0 .7em;
-      margin-left: .4em;
-      vertical-align: 2px;
     }
+    .tl-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .tl-link {
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: .3em;
+      font-size: .72rem; font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1.2px solid var(--matcha);
+      color: var(--matcha);
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .tl-link:hover { background: var(--matcha); color: #fff; }
+    .tl-link--accent { border-color: var(--shu); color: var(--shu); }
+    .tl-link--accent:hover { background: var(--shu); color: #fff; }
     .tl-title {
       font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 1.08rem;
-      margin: .5em 0 .15em;
+      font-size: .98rem;
+      margin: .3em 0 0;
       color: var(--matcha-deep);
       line-height: 1.4;
       word-break: auto-phrase;  /* 対応ブラウザでは単語の途中で改行しない */
     }
-    .tl-text { margin: 0; font-size: .86rem; line-height: 1.6; color: var(--ink-soft); }
+    .tl-text { margin: 0; font-size: .8rem; line-height: 1.5; color: var(--ink-soft); }
     .tl-highlights {
       display: flex; flex-wrap: wrap; gap: 6px;
       list-style: none; padding: 0; margin: 12px 0 0;
@@ -601,9 +614,9 @@
       .summary__card { grid-template-columns: repeat(4, 1fr); padding: 24px; }
       .points { grid-template-columns: 1fr 1fr; }
       .points .point:last-child { grid-column: 1 / -1; }
-      .timeline::before { left: 21px; }
-      .tl-icon { width: 56px; height: 56px; font-size: 1.55rem; }
-      .tl-item { padding-left: 76px; }
+      .timeline::before { left: 15px; }
+      .tl-icon { width: 44px; height: 44px; font-size: 1.25rem; }
+      .tl-item { padding-left: 60px; }
       .hero__inner { padding-bottom: 190px; }
     }
 
@@ -752,114 +765,93 @@
           <li class="tl-item reveal tl-item--start" data-start="10:00" data-end="10:15">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">10:00</span><span class="tl-tag">START</span>
+              <div class="tl-head">
+                <span class="tl-time">10:00</span><span class="tl-tag">START</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&amp;destination=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
               <h3 class="tl-title">天王寺を出発</h3>
               <p class="tl-text">天王寺で合流。西名阪道で宇陀市へ。</p>
-              <div class="tl-actions">
-                <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 集合場所</a>
-              </div>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--spot" data-start="11:15" data-end="13:30">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">11:15 〜 13:30</span><span class="tl-tag">宇陀市</span>
-              <h3 class="tl-title">室生山上公園 芸術の森<br>＆ 軽めのごはん</h3>
-              <p class="tl-text">野外アート散策とランチ。</p>
-              <ul class="tl-highlights">
-                <li>野外アート</li>
-                <li>フォトスポット</li>
-                <li>ランチ</li>
-              </ul>
-              <div class="tl-actions">
-                <a class="btn btn--accent" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 地図を開く</a>
-                <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&destination=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ここまでのルート</a>
+              <div class="tl-head">
+                <span class="tl-time">11:15〜13:30</span><span class="tl-tag">宇陀市</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>地図</a>
               </div>
+              <h3 class="tl-title">芸術の森 ＆ 軽めのごはん</h3>
+              <p class="tl-text">室生山上公園で野外アート散策とランチ。</p>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--move" data-start="13:30" data-end="15:30">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">13:30 〜 15:30</span><span class="tl-tag">約2時間</span>
-              <h3 class="tl-title">十津川村へ大移動</h3>
-              <p class="tl-text">約2時間の山道。休憩はこまめに。</p>
-              <div class="tl-actions">
-                <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ルートを確認</a>
+              <div class="tl-head">
+                <span class="tl-time">13:30〜15:30</span><span class="tl-tag">約2時間</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&amp;destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
               </div>
+              <h3 class="tl-title">十津川村へ大移動</h3>
+              <p class="tl-text">山道が続くので休憩はこまめに。</p>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--spot" data-start="15:30" data-end="17:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bridge"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">15:30 〜 17:00</span><span class="tl-tag">十津川村</span>
-              <h3 class="tl-title">谷瀬の吊り橋 ＆ 絶景ブレイク</h3>
-              <p class="tl-text">高さ54mの吊り橋でスリルと絶景。</p>
-              <ul class="tl-highlights">
-                <li>高さ54m</li>
-                <li>絶景</li>
-                <li>名物こんにゃく</li>
-              </ul>
-              <div class="tl-actions">
-                <a class="btn btn--accent" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 地図を開く</a>
+              <div class="tl-head">
+                <span class="tl-time">15:30〜17:00</span><span class="tl-tag">十津川村</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>地図</a>
               </div>
+              <h3 class="tl-title">谷瀬の吊り橋 ＆ 絶景ブレイク</h3>
+              <p class="tl-text">高さ54m。名物こんにゃくでひと休み。</p>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--move" data-start="17:00" data-end="18:15">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-sunset"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">17:00 〜 18:15</span><span class="tl-tag">約1時間15分</span>
+              <div class="tl-head">
+                <span class="tl-time">17:00〜18:15</span><span class="tl-tag">約1時間15分</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;destination=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
               <h3 class="tl-title">五條方面へ山を下りる</h3>
               <p class="tl-text">日没前後。早めにライト点灯を。</p>
-              <div class="tl-actions">
-                <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&destination=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ルートを確認</a>
-              </div>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--spot" data-start="18:15" data-end="19:45">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bowl"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">18:15 〜 19:45</span><span class="tl-tag">五條・橿原あたり</span>
+              <div class="tl-head">
+                <span class="tl-time">18:15〜19:45</span><span class="tl-tag">五條・橿原</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BA%94%E6%A2%9D%E5%B8%82%20%E5%A4%95%E9%A3%9F" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>お店</a>
+              </div>
               <h3 class="tl-title">帰り道で夕ごはん</h3>
               <p class="tl-text">お店は当日の気分で決めよう。</p>
-              <ul class="tl-highlights">
-                <li>ゆっくり休憩</li>
-                <li>運転交代のタイミング</li>
-              </ul>
-              <div class="tl-actions">
-                <a class="btn btn--accent" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/search/?api=1&query=%E4%BA%94%E6%A2%9D%E5%B8%82%20%E5%A4%95%E9%A3%9F"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 近くのお店を探す</a>
-              </div>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--move" data-start="19:45" data-end="21:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">19:45 〜 21:00</span><span class="tl-tag">約1時間15分</span>
+              <div class="tl-head">
+                <span class="tl-time">19:45〜21:00</span><span class="tl-tag">約1時間15分</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
               <h3 class="tl-title">天王寺へ帰路</h3>
               <p class="tl-text">食後は眠くなりがち。無理せず休憩を。</p>
-              <div class="tl-actions">
-                <a class="btn" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/dir/?api=1&origin=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> 帰りのルート</a>
-              </div>
             </div>
           </li>
 
           <li class="tl-item reveal tl-item--goal" data-start="21:00" data-end="22:00">
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-deer"/></svg></div>
             <div class="tl-card">
-              <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
+              <div class="tl-head">
+                <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
+              </div>
               <h3 class="tl-title">天王寺到着・解散</h3>
               <p class="tl-text">おつかれさまでした！</p>
             </div>
