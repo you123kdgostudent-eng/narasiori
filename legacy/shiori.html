@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2e4a3e">
+  <meta name="description" content="奈良縦断！芸術の森 & 谷瀬の吊り橋ドライブ ― 日帰りドライブのWEBしおり">
+  <title>奈良縦断ドライブしおり</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>if ("IntersectionObserver" in window) document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      /* 奈良の伝統色：松葉の深緑・若草色・朱・柿渋・墨・生成り */
+      --matcha: #2e4a3e;
+      --matcha-deep: #1f342b;
+      --matcha-soft: #5b7a69;
+      --moss: #a3ae52;          /* 若草色（やや落ち着かせたもの） */
+      --wakakusa-soft: #eef0da;
+      --shu: #c8503a;           /* 朱 */
+      --shu-soft: #f6e0d6;
+      --gold: #9a5a3c;          /* 柿渋色 */
+      --gold-soft: #f0dccb;
+      --washi: #f8f4e6;         /* 生成り */
+      --paper: #fffdf6;
+      --ink: #3d3a35;           /* 墨 */
+      --ink-soft: #6f6a60;
+      --line: #e4dcc6;
+      --radius: 18px;
+      --shadow: 0 6px 24px rgba(31, 52, 43, .10);
+      --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+      --font-sans: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background-color: var(--washi);
+      /* 和紙っぽい細かな地紋 */
+      background-image:
+        radial-gradient(rgba(46, 74, 62, .05) 1px, transparent 1px),
+        radial-gradient(rgba(184, 149, 90, .05) 1px, transparent 1px);
+      background-size: 22px 22px, 34px 34px;
+      background-position: 0 0, 11px 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      color: #fff;
+      background:
+        linear-gradient(170deg, rgba(31, 52, 43, .2) 0%, rgba(31, 52, 43, .0) 40%),
+        linear-gradient(180deg, #e8c9a0 0%, #d99a6c 28%, #6f8a76 62%, var(--matcha) 100%);
+      padding: calc(env(safe-area-inset-top) + 56px) 0 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero__sun {
+      position: absolute;
+      top: 64px; right: 12%;
+      width: 92px; height: 92px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff3d6 0%, #f4b07a 55%, rgba(217, 83, 79, .0) 72%);
+      opacity: .9;
+      z-index: -1;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero__inner { text-align: center; padding-bottom: 150px; }
+    .hero__label {
+      display: inline-flex; align-items: center; gap: .4em;
+      font-size: .78rem; letter-spacing: .25em;
+      padding: .35em 1em;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(4px);
+    }
+    .hero__title {
+      font-family: var(--font-serif);
+      font-weight: 800;
+      font-size: clamp(1.7rem, 7.4vw, 2.7rem);
+      line-height: 1.35;
+      margin: .7em 0 .3em;
+      text-shadow: 0 2px 14px rgba(31, 52, 43, .45);
+    }
+    .hero__title small {
+      display: block;
+      font-size: .5em;
+      font-weight: 700;
+      letter-spacing: .12em;
+      margin-bottom: .3em;
+    }
+    .hero__title .amp { color: var(--gold-soft); font-weight: 500; }
+    .hero__sub {
+      font-size: .92rem;
+      opacity: .95;
+      margin: 0;
+      text-shadow: 0 1px 8px rgba(31, 52, 43, .5);
+    }
+    .hero__mountains { position: absolute; left: 0; right: 0; bottom: -1px; z-index: -1; }
+    .hero__mountains svg { width: 100%; height: auto; }
+    .hero__car {
+      position: absolute; bottom: 30px; left: -40px;
+      font-size: 1.6rem;
+      animation: drive 14s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes drive { from { left: -40px; } to { left: 105%; } }
+
+    /* ---------- Summary ---------- */
+    .summary {
+      position: relative;
+      margin-top: -28px;
+      z-index: 2;
+    }
+    .summary__card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      border-top: 4px solid var(--shu);
+    }
+    .stat { display: flex; gap: 10px; align-items: flex-start; }
+    .stat__icon {
+      flex: none;
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: var(--washi);
+      font-size: 1.2rem;
+    }
+    .stat__label { font-size: .7rem; color: var(--ink-soft); letter-spacing: .08em; }
+    .stat__value { font-weight: 700; color: var(--matcha); line-height: 1.4; font-size: .98rem; }
+
+
+    /* ---------- Section ---------- */
+    section { padding: 44px 0 8px; }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--matcha);
+      margin: 0 0 22px;
+      display: flex; align-items: center; gap: .6em;
+    }
+    .section-title::before {
+      content: "";
+      width: 8px; height: 26px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, var(--moss), var(--gold));
+    }
+    .section-title span {
+      font-family: var(--font-sans);
+      font-size: .7rem; letter-spacing: .2em;
+      color: var(--gold);
+      margin-left: auto;
+      font-weight: 500;
+    }
+
+    /* ---------- Overview ---------- */
+    .flow {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 18px;
+    }
+    .routemap { display: grid; gap: 12px; justify-items: center; }
+    .routemap__svg { width: 100%; max-width: 420px; height: auto; }
+    .rm-bg { fill: var(--wakakusa-soft); }
+    .rm-mtn path { fill: none; stroke: var(--moss); stroke-width: 1.4; stroke-linejoin: round; }
+    .rm-compass path { fill: var(--shu); }
+    .rm-compass text, .rm-area { font-family: var(--font-serif); font-size: 11px; fill: var(--ink-soft); letter-spacing: .1em; }
+    .rm-road { fill: none; stroke: var(--paper); stroke-width: 9; stroke-linecap: round; }
+    .rm-route { fill: none; stroke: var(--matcha); stroke-width: 3.5; stroke-linecap: round; }
+    .rm-chip rect { fill: var(--paper); stroke: var(--line); }
+    .rm-chip text { font-size: 10px; fill: var(--matcha); font-weight: 700; }
+    .rm-pin__halo { fill: var(--shu); opacity: .18; }
+    .rm-pin__dot { fill: var(--shu); stroke: var(--paper); stroke-width: 2.5; }
+    .rm-pin[data-pin="0"] .rm-pin__dot { fill: var(--matcha); }
+    .rm-pin[data-pin="0"] .rm-pin__halo { fill: var(--matcha); }
+    .rm-name { font-family: var(--font-serif); font-weight: 700; font-size: 13.5px; fill: var(--matcha-deep); }
+    .rm-time { font-size: 10.5px; fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .rm-car circle { fill: var(--paper); stroke: var(--shu); stroke-width: 2; }
+    .rm-car use { fill: none; stroke: var(--shu); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .rm-pin, .rm-chip { transition: opacity .5s ease, transform .5s cubic-bezier(.3, 1.6, .5, 1); transform-box: fill-box; transform-origin: center; }
+    .routemap.is-playing .rm-pin:not(.is-on), .routemap.is-playing .rm-chip:not(.is-on) { opacity: 0; transform: scale(.4); }
+    .rm-chip.is-on, .rm-pin.is-on { transform: none; }
+    .rm-pin.is-on .rm-pin__halo { animation: halo 1.2s ease-out 1; transform-box: fill-box; transform-origin: center; }
+    @keyframes halo { from { transform: scale(.6); opacity: .6; } to { transform: scale(1.8); opacity: .18; } }
+    .routemap__replay { font-size: .78rem; }
+
+    .flow-steps {
+      list-style: none;
+      margin: 18px 0 0; padding: 16px 0 0;
+      border-top: 1px solid var(--line);
+      display: grid; gap: 14px;
+    }
+    .flow-steps li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 8px 10px;
+      margin: -8px -10px;
+      border-radius: 12px;
+      transition: background .4s ease;
+    }
+    .flow-steps li.is-active { background: var(--wakakusa-soft); }
+    .flow-steps li.is-active .flow-steps__when { background: var(--matcha); color: var(--paper); border-color: var(--matcha); }
+    .flow-steps li > div { min-width: 0; }
+    .flow-steps__when {
+      flex: none;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--matcha);
+      background: var(--wakakusa-soft);
+      border: 1px solid var(--moss);
+      transition: background .4s ease, color .4s ease;
+    }
+    .flow-steps strong { display: block; font-family: var(--font-serif); color: var(--matcha-deep); font-size: 1rem; }
+    .flow-steps p { margin: 0; font-size: .85rem; color: var(--ink-soft); }
+
+    /* ---------- Now bar ---------- */
+    .nowbar {
+      display: none;
+      align-items: center; gap: 10px;
+      background: var(--shu-soft);
+      color: #8f2f2c;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .nowbar.is-visible { display: flex; }
+    .nowbar__dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--shu);
+      box-shadow: 0 0 0 0 rgba(217, 83, 79, .6);
+      animation: pulse 1.8s infinite;
+      flex: none;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, .55); }
+      70% { box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
+    }
+
+    /* ---------- Timeline ---------- */
+    .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 12px; top: 10px; bottom: 10px;
+      width: 14px;
+      background: var(--moss);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 28'%3E%3Cg fill='black'%3E%3Cellipse cx='2.7' cy='6' rx='1.3' ry='2.6' transform='rotate%28-10 2.7 6%29'/%3E%3Cellipse cx='5.5' cy='6' rx='1.3' ry='2.6' transform='rotate%2810 5.5 6%29'/%3E%3Cellipse cx='8.5' cy='20' rx='1.3' ry='2.6' transform='rotate%28-10 8.5 20%29'/%3E%3Cellipse cx='11.3' cy='20' rx='1.3' ry='2.6' transform='rotate%2810 11.3 20%29'/%3E%3C/g%3E%3C/svg%3E") repeat-y center / 14px 28px;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 28'%3E%3Cg fill='black'%3E%3Cellipse cx='2.7' cy='6' rx='1.3' ry='2.6' transform='rotate%28-10 2.7 6%29'/%3E%3Cellipse cx='5.5' cy='6' rx='1.3' ry='2.6' transform='rotate%2810 5.5 6%29'/%3E%3Cellipse cx='8.5' cy='20' rx='1.3' ry='2.6' transform='rotate%28-10 8.5 20%29'/%3E%3Cellipse cx='11.3' cy='20' rx='1.3' ry='2.6' transform='rotate%2810 11.3 20%29'/%3E%3C/g%3E%3C/svg%3E") repeat-y center / 14px 28px;
+    }
+    .tl-item {
+      position: relative;
+      padding-left: 52px;
+      margin-bottom: 8px;
+    }
+    .tl-icon {
+      position: absolute; left: 0; top: 4px;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 1.1rem;
+      background: var(--paper);
+      border: 2px solid var(--moss);
+      box-shadow: 0 3px 10px rgba(31, 52, 43, .12);
+      z-index: 1;
+    }
+    .tl-item--spot .tl-icon { border-color: var(--shu); }
+    .tl-item--goal .tl-icon { border-color: var(--gold); background: var(--gold-soft); }
+
+    .tl-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 9px 14px 10px;
+      border: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .tl-item--move .tl-card {
+      background: transparent;
+      box-shadow: none;
+      border: 1px solid transparent;
+    }
+    .tl-item.is-now .tl-card { border: 2px solid var(--shu); box-shadow: 0 8px 28px rgba(217, 83, 79, .18); }
+    .tl-item.is-now .tl-icon { background: var(--shu); border-color: var(--shu); }
+    .tl-item.is-done .tl-card, .tl-item.is-done .tl-icon { opacity: .55; }
+
+    .tl-time {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: .9rem;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.6;
+      color: #fff;
+      background: var(--matcha);
+      padding: .05em .7em;
+      border-radius: 6px;
+      letter-spacing: .02em;
+    }
+    .tl-item--spot .tl-time { background: var(--shu); }
+    .tl-item--goal .tl-time { background: var(--gold); }
+    .tl-tag {
+      display: inline-block;
+      font-size: .7rem;
+      color: var(--matcha-soft);
+      border: 1px solid var(--moss);
+      border-radius: 999px;
+      padding: 0 .7em;
+    }
+    /* 移動は「つなぎ」の細い行にして、1画面に収める */
+    .tl-item--move { margin-bottom: 8px; }
+    .tl-item--move .tl-card { padding: 2px 14px; }
+    .tl-item--move .tl-icon { width: 30px; height: 30px; left: 4px; top: 2px; font-size: .95rem; }
+    .tl-item--move .tl-time { background: transparent; color: var(--matcha); padding: 0; font-size: .82rem; }
+    .tl-item--move .tl-title { font-size: .88rem; color: var(--matcha-soft); margin-top: .1em; }
+    .tl-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .tl-link {
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: .3em;
+      font-size: .72rem; font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1.2px solid var(--matcha);
+      color: var(--matcha);
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .tl-link:hover { background: var(--matcha); color: #fff; }
+    .tl-link--accent { border-color: var(--shu); color: var(--shu); }
+    .tl-link--accent:hover { background: var(--shu); color: #fff; }
+    .tl-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: .98rem;
+      margin: .3em 0 0;
+      color: var(--matcha-deep);
+      line-height: 1.4;
+      word-break: auto-phrase;  /* 対応ブラウザでは単語の途中で改行しない */
+    }
+    .tl-text { margin: 0; font-size: .8rem; line-height: 1.5; color: var(--ink-soft); }
+    .tl-highlights {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      list-style: none; padding: 0; margin: 12px 0 0;
+    }
+    .tl-highlights li {
+      font-size: .74rem;
+      background: var(--washi);
+      color: var(--matcha);
+      padding: .2em .75em;
+      border-radius: 999px;
+    }
+    .tl-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .4em;
+      font-size: .8rem; font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1.5px solid var(--matcha);
+      color: var(--matcha);
+      background: transparent;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .btn:hover { background: var(--matcha); color: #fff; }
+    .btn:active { transform: scale(.96); }
+    .btn--accent { border-color: var(--shu); color: var(--shu); }
+    .btn--accent:hover { background: var(--shu); color: #fff; }
+
+    /* ---------- Points ---------- */
+    .points { display: grid; gap: 14px; }
+    .point {
+      background: var(--paper);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex; gap: 14px;
+    }
+    .point__icon { font-size: 1.6rem; line-height: 1; }
+    .point h3 { margin: 0 0 .2em; font-size: 1rem; color: var(--matcha); font-family: var(--font-serif); }
+    .point p { margin: 0; font-size: .88rem; color: var(--ink-soft); }
+    .point strong { color: var(--shu); }
+
+    /* ---------- Safety ---------- */
+    .safety {
+      background: linear-gradient(160deg, var(--matcha) 0%, var(--matcha-deep) 100%);
+      color: #f3efe4;
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .safety::after {
+      content: "安全運転";
+      position: absolute; right: -6px; bottom: -14px;
+      font-family: var(--font-serif);
+      font-size: 3.6rem; font-weight: 800;
+      color: rgba(255, 255, 255, .05);
+      writing-mode: horizontal-tb;
+      pointer-events: none;
+    }
+    .safety h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold-soft);
+      display: flex; align-items: center; gap: .4em;
+    }
+    .safety ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .safety li {
+      display: flex; gap: 10px;
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+    .hoof {
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+    }
+    .safety li::before {
+      content: "";
+      flex: none;
+      width: 11px; height: 11px;
+      margin-top: .45em;
+      background: var(--gold-soft);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+    }
+    .safety li span { min-width: 0; }
+    .safety em { font-style: normal; color: #ffd2b8; font-weight: 700; }
+
+    /* ---------- Checklist ---------- */
+    .checklist {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 6px 4px;
+      list-style: none;
+      margin: 0;
+    }
+    .checklist li + li { border-top: 1px solid var(--line); }
+    .checklist label {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 14px;
+      cursor: pointer;
+      font-size: .92rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .checklist input { position: absolute; opacity: 0; pointer-events: none; }
+    .checkbox {
+      flex: none;
+      width: 24px; height: 24px;
+      border-radius: 7px;
+      border: 2px solid var(--moss);
+      display: grid; place-items: center;
+      transition: background .2s, border-color .2s;
+    }
+    .checkbox::after {
+      content: "";
+      width: 6px; height: 11px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg) scale(0);
+      margin-top: -3px;
+      transition: transform .2s;
+    }
+    .checklist input:checked + .checkbox { background: var(--matcha); border-color: var(--matcha); }
+    .checklist input:checked + .checkbox::after { transform: rotate(45deg) scale(1); }
+    .checklist input:checked ~ .check-text { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--shu); }
+    .checklist input:focus-visible + .checkbox { outline: 2px solid var(--shu); outline-offset: 2px; }
+    .check-progress { font-size: .8rem; color: var(--ink-soft); margin: 10px 4px 0; text-align: right; }
+
+    /* ---------- Memo ---------- */
+    .memo {
+      background: var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .memo__label { display: block; font-size: .85rem; color: var(--matcha); font-weight: 700; margin-bottom: 8px; }
+    .memo textarea {
+      width: 100%;
+      border: none;
+      resize: vertical;
+      font: inherit;
+      font-size: .95rem;
+      color: var(--ink);
+      line-height: 2em;
+      padding: 0 4px;
+      background-color: transparent;
+      background-image: linear-gradient(transparent calc(2em - 1px), var(--line) calc(2em - 1px));
+      background-size: 100% 2em;
+      background-attachment: local;
+    }
+    .memo textarea:focus { outline: 2px solid var(--moss); outline-offset: 4px; border-radius: 4px; }
+    .memo__hint { margin: 8px 0 0; font-size: .75rem; color: var(--ink-soft); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      padding: 48px 16px calc(env(safe-area-inset-bottom) + 40px);
+      color: var(--ink-soft);
+      font-size: .8rem;
+    }
+    footer .seal {
+      display: inline-grid; place-items: center;
+      width: 56px; height: 56px;
+      border: 2px solid var(--shu);
+      color: var(--shu);
+      border-radius: 10px;
+      font-family: var(--font-serif);
+      font-weight: 800;
+      font-size: .95rem;
+      line-height: 1.1;
+      transform: rotate(-6deg);
+      margin-bottom: 14px;
+    }
+
+    /* ---------- To top ---------- */
+    .to-top {
+      position: fixed;
+      right: 16px; bottom: calc(env(safe-area-inset-bottom) + 16px);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--shu);
+      color: #fff;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 18px rgba(217, 83, 79, .4);
+      cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .3s;
+      z-index: 10;
+    }
+    .to-top.is-visible { opacity: 1; pointer-events: auto; transform: none; }
+
+    /* ---------- Deer ---------- */
+    .hero__deer {
+      position: absolute;
+      left: 5%;
+      bottom: calc(5.2vw - 12px);
+      display: flex; align-items: flex-end;
+      color: var(--matcha-deep);
+      z-index: 0;  /* 走る車より手前 */
+    }
+    .deer { width: 96px; height: 96px; }
+    .deer--doe { width: 72px; height: 72px; margin-left: -10px; transform: scaleX(-1); }
+    @media (min-width: 720px) {
+      .hero__deer { bottom: 20px; left: calc(50% - 330px); }
+      .deer { width: 112px; height: 112px; }
+      .deer--doe { width: 82px; height: 82px; }
+    }
+    .footer-deer { width: 72px; height: 72px; color: var(--matcha); margin: 0 auto 6px; }
+
+    /* ---------- Line icons ---------- */
+    .i {
+      width: 1em; height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+    }
+    .hero__car { color: rgba(255, 255, 255, .85); }
+    .stat__icon, .tl-icon { color: var(--matcha); }
+    .tl-item--spot .tl-icon, .point__icon { color: var(--shu); }
+    .tl-item--goal .tl-icon { color: var(--gold); }
+    .tl-item.is-now .tl-icon { color: #fff; }
+    .safety h3 .i { font-size: 1.15em; }
+    .tl-highlights li { display: inline-flex; align-items: center; gap: .45em; }
+    .tl-highlights li { background: var(--wakakusa-soft); }
+    .tl-highlights li::before {
+      content: "";
+      width: 9px; height: 9px;
+      background: var(--gold);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cg fill='black'%3E%3Cellipse cx='3.3' cy='5' rx='1.7' ry='3.6' transform='rotate%28-10 3.3 5%29'/%3E%3Cellipse cx='6.7' cy='5' rx='1.7' ry='3.6' transform='rotate%2810 6.7 5%29'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+    }
+
+    /* ---------- スクロールでふわっと表示 ----------
+       1. 最初は透明＋30px下に置いておく
+       2. 画面に入ったらJSが .is-show を付ける
+       3. .is-show が付くと、元の位置へ滑らかに戻る
+       ※ .js クラスはJSが動くときだけ付くので、JSが無効でも内容は見えます */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .js .reveal.is-show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Larger screens ---------- */
+    @media (min-width: 640px) {
+      .summary__card { grid-template-columns: repeat(4, 1fr); padding: 24px; }
+      .points { grid-template-columns: 1fr 1fr; }
+      .points .point:last-child { grid-column: 1 / -1; }
+      .timeline::before { left: 15px; }
+      .tl-icon { width: 44px; height: 44px; font-size: 1.25rem; }
+      .tl-item { padding-left: 60px; }
+      .tl-item--move .tl-icon { left: 7px; }
+      .hero__inner { padding-bottom: 190px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-car" viewBox="0 0 24 24"><path d="M3 13l2-5.2A2 2 0 0 1 6.9 6.5h10.2a2 2 0 0 1 1.9 1.3L21 13v4h-2.7M5.7 17H3v-4h18M9.3 17h5.4"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></symbol><symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 19l7-11 4 6 2.5-3.5L22 19z"/><path d="M7.2 10.8l1.8 1.4 1.7-1.4"/></symbol><symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 16h20M4 8v11M20 8v11M4 8c3 6 13 6 16 0M8 12.4V16M12 13.5V16M16 12.4V16"/></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 18h18M6 15a6 6 0 0 1 12 0M12 4v3M4.9 7.9l1.5 1.5M19.1 7.9l-1.5 1.5M8 21h8"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol><symbol id="i-road" viewBox="0 0 24 24"><path d="M8 3L4 21M16 3l4 18M12 4v3M12 10.5v3M12 17v3"/></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3v1a5 5 0 0 0 10 0V3M7 21v-1a5 5 0 0 1 10 0v1M12 9v6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"/></symbol><symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 8v9h18v-1.5a3 3 0 0 0-2.4-2.9L13 11.5 10 8.5 7 10 3 8zM3 17v2h18v-2M10.5 11.5l1-1M12.5 13l1-1"/></symbol><symbol id="i-jacket" viewBox="0 0 24 24"><path d="M9 3l3 3 3-3 5 3-2 5-2-1v11H8V10l-2 1-2-5zM12 6v15"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3L2 20h20zM12 10v4M12 17h.01"/></symbol><symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 12h18a9 9 0 0 1-18 0zM8 21h8M13 3l-3 7M19 4l-6 6"/></symbol><symbol id="deer-buck" viewBox="0 0 120 120"><path d="M14 41C16 36 20 31 26 29C29 27 32 27 35 28L46 16C46 22 43 27 39.5 31C42 40 46 48 54 52C66 50 82 50 92 53C96 54 99 53 101 50.5C101.5 55 99.5 58 97 59.5C99 66 99 74 96.5 80L97.5 104H93.8L92 84.5L90.5 104H86.8L86.3 78C84 76.5 82 75.5 80 75C74 75.5 69 75.5 64 74.5L63.5 104H59.8L58.2 81L55.7 104H52L50.3 70C47 64 44.5 60 41.5 55.5C36.5 50.5 30.5 47.5 24.5 46.2C20 45.3 16 44.2 14 41Z" fill="currentColor"/><path d="M31 29C30 21 32 14 36.5 8M33 18.5C29.5 16 27.5 13 26.5 9M36.5 8C39 6 41.5 5.2 44.5 5.6M35 11.5C37.5 11.5 40 12.5 42 14.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><g style="fill: var(--washi)" opacity=".85"><circle cx="64" cy="57" r="1.6"/><circle cx="70" cy="55.5" r="1.6"/><circle cx="76" cy="57" r="1.6"/><circle cx="82" cy="55.8" r="1.6"/><circle cx="88" cy="57.5" r="1.6"/><circle cx="67" cy="62" r="1.5"/><circle cx="73" cy="61.5" r="1.5"/><circle cx="79" cy="62" r="1.5"/><circle cx="85" cy="62.5" r="1.5"/><circle cx="24.5" cy="35.5" r="1.3"/></g></symbol><symbol id="deer-doe" viewBox="0 0 120 120"><path d="M14 41C16 36 20 31 26 29C29 27 32 27 35 28L46 16C46 22 43 27 39.5 31C42 40 46 48 54 52C66 50 82 50 92 53C96 54 99 53 101 50.5C101.5 55 99.5 58 97 59.5C99 66 99 74 96.5 80L97.5 104H93.8L92 84.5L90.5 104H86.8L86.3 78C84 76.5 82 75.5 80 75C74 75.5 69 75.5 64 74.5L63.5 104H59.8L58.2 81L55.7 104H52L50.3 70C47 64 44.5 60 41.5 55.5C36.5 50.5 30.5 47.5 24.5 46.2C20 45.3 16 44.2 14 41Z" fill="currentColor"/><g style="fill: var(--washi)" opacity=".85"><circle cx="64" cy="57" r="1.6"/><circle cx="70" cy="55.5" r="1.6"/><circle cx="76" cy="57" r="1.6"/><circle cx="82" cy="55.8" r="1.6"/><circle cx="88" cy="57.5" r="1.6"/><circle cx="67" cy="62" r="1.5"/><circle cx="73" cy="61.5" r="1.5"/><circle cx="79" cy="62" r="1.5"/><circle cx="85" cy="62.5" r="1.5"/><circle cx="24.5" cy="35.5" r="1.3"/></g></symbol><symbol id="i-deer" viewBox="0 0 24 24"><path d="M9 11.5c0 4 1.5 7.5 3 8.5 1.5-1 3-4.5 3-8.5zM9 11.5L5 10M15 11.5l4-1.5M10 9.5V4M10 6.5L8 4.8M14 9.5V4M14 6.5l2-1.7"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol></defs></svg>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero" id="top">
+    <div class="hero__sun" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <span class="hero__label">NARA DAY DRIVE</span>
+      <h1 class="hero__title">
+        <small>奈良縦断！</small>
+        芸術の森 <span class="amp">&amp;</span><br>谷瀬の吊り橋ドライブ
+      </h1>
+      <p class="hero__sub">よくばり日帰りドライブしおり</p>
+    </div>
+
+    <div class="hero__mountains" aria-hidden="true">
+      <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+        <path d="M0 70 L40 40 L80 62 L130 22 L180 58 L220 34 L270 66 L320 28 L370 56 L400 44 V140 H0Z" fill="#5b7a69" opacity=".55"/>
+        <path d="M0 96 L50 66 L95 88 L150 56 L205 90 L255 62 L300 92 L350 70 L400 86 V140 H0Z" fill="#3d5e4f" opacity=".85"/>
+        <!-- 吊り橋のシルエット -->
+        <g stroke="#f7f3ea" stroke-width="1.2" fill="none" opacity=".75">
+          <path d="M150 94 Q205 120 260 94"/>
+          <line x1="150" y1="84" x2="150" y2="104"/>
+          <line x1="260" y1="84" x2="260" y2="104"/>
+          <line x1="150" y1="104" x2="260" y2="104"/>
+          <line x1="172" y1="101" x2="172" y2="104"/>
+          <line x1="194" y1="105" x2="194" y2="104"/>
+          <line x1="216" y1="105" x2="216" y2="104"/>
+          <line x1="238" y1="101" x2="238" y2="104"/>
+        </g>
+        <path d="M0 116 Q100 100 200 114 T400 110 V140 H0Z" fill="#2e4a3e"/>
+        <path d="M0 132 Q100 124 200 132 T400 130 V140 H0Z" fill="#f7f3ea"/>
+      </svg>
+    </div>
+    <div class="hero__deer" aria-hidden="true">
+      <svg class="deer deer--buck"><use href="#deer-buck"/></svg>
+      <svg class="deer deer--doe"><use href="#deer-doe"/></svg>
+    </div>
+    <div class="hero__car" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
+  </header>
+
+  <main>
+    <!-- ===== Summary ===== -->
+    <div class="container summary">
+      <div class="summary__card reveal">
+        <div class="stat">
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></div>
+          <div>
+            <div class="stat__label">集合</div>
+            <div class="stat__value">10:00</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></div>
+          <div>
+            <div class="stat__label">集合場所</div>
+            <div class="stat__value">天王寺</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
+          <div>
+            <div class="stat__label">走行距離</div>
+            <div class="stat__value">約250km</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat__icon"><svg class="i" aria-hidden="true"><use href="#i-hourglass"/></svg></div>
+          <div>
+            <div class="stat__label">総移動時間</div>
+            <div class="stat__value">約5時間45分</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Overview ===== -->
+    <section id="flow">
+      <div class="container">
+        <h2 class="section-title reveal">1日の流れ <span>OVERVIEW</span></h2>
+        <div class="flow reveal">
+          <div class="routemap">
+            <svg class="routemap__svg" viewBox="0 0 320 340" role="img" aria-label="天王寺から芸術の森、谷瀬の吊り橋、五條を回って天王寺へ戻るルート">
+            <rect x="0" y="0" width="320" height="340" rx="14" class="rm-bg"/>
+            <g class="rm-mtn"><path d="M262 262l14-22 14 22zM280 262l16-26 16 26zM248 278l12-18 12 18z"/></g>
+            <g class="rm-compass" transform="translate(296 26)"><path d="M0-12L5 4 0 1-5 4z"/><text y="18" text-anchor="middle">N</text></g>
+            <text class="rm-area" x="18" y="322">大阪</text><text class="rm-area" x="310" y="296" text-anchor="end">十津川</text>
+            <path class="rm-road" d="M60 70C120 30 210 40 258 100"/><path class="rm-route" data-seg="0" d="M60 70C120 30 210 40 258 100"/>
+            <path class="rm-road" d="M258 100C290 160 255 225 175 290"/><path class="rm-route" data-seg="1" d="M258 100C290 160 255 225 175 290"/>
+            <path class="rm-road" d="M175 290C140 275 110 250 105 200"/><path class="rm-route" data-seg="2" d="M175 290C140 275 110 250 105 200"/>
+            <path class="rm-road" d="M105 200C100 150 50 120 60 70"/><path class="rm-route" data-seg="3" d="M105 200C100 150 50 120 60 70"/>
+            <g transform="translate(163 47)"><g class="rm-chip" data-chip="0"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g transform="translate(258 193)"><g class="rm-chip" data-chip="1"><rect x="-26.0" y="-9" width="52.0" height="18" rx="9"/><text text-anchor="middle" y="3.5">約2時間</text></g></g>
+            <g transform="translate(129 258)"><g class="rm-chip" data-chip="2"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g transform="translate(77 135)"><g class="rm-chip" data-chip="3"><rect x="-40.2" y="-9" width="80.5" height="18" rx="9"/><text text-anchor="middle" y="3.5">約1時間15分</text></g></g>
+            <g class="rm-pin" data-pin="0"><circle class="rm-pin__halo" cx="60" cy="70" r="11"/><circle class="rm-pin__dot" cx="60" cy="70" r="6"/><text class="rm-name" x="74" y="96" text-anchor="start">天王寺</text><text class="rm-time" x="74" y="110" text-anchor="start">10:00発・21:00着</text></g>
+            <g class="rm-pin" data-pin="1"><circle class="rm-pin__halo" cx="258" cy="100" r="11"/><circle class="rm-pin__dot" cx="258" cy="100" r="6"/><text class="rm-name" x="246" y="122" text-anchor="end">芸術の森</text><text class="rm-time" x="246" y="136" text-anchor="end">11:15〜13:30</text></g>
+            <g class="rm-pin" data-pin="2"><circle class="rm-pin__halo" cx="175" cy="290" r="11"/><circle class="rm-pin__dot" cx="175" cy="290" r="6"/><text class="rm-name" x="188" y="308" text-anchor="start">谷瀬の吊り橋</text><text class="rm-time" x="188" y="322" text-anchor="start">15:30〜17:00</text></g>
+            <g class="rm-pin" data-pin="3"><circle class="rm-pin__halo" cx="105" cy="200" r="11"/><circle class="rm-pin__dot" cx="105" cy="200" r="6"/><text class="rm-name" x="118" y="198" text-anchor="start">五條で夕ごはん</text><text class="rm-time" x="118" y="212" text-anchor="start">18:15〜19:45</text></g>
+            <g class="rm-car" id="routeCar" transform="translate(60 70)"><circle r="12"/><use href="#i-car" x="-8" y="-8" width="16" height="16"/></g>
+            </svg>
+            <button class="btn routemap__replay" id="routeReplay" type="button">もう一度ルートを再生</button>
+          </div>
+          <ol class="flow-steps">
+            <li data-step="0">
+              <span class="flow-steps__when">朝</span>
+              <div><strong>天王寺 → 宇陀</strong><p>10:00に出発。芸術の森でアート散策とランチ</p></div>
+            </li>
+            <li data-step="1">
+              <span class="flow-steps__when">昼</span>
+              <div><strong>宇陀 → 十津川</strong><p>山あいを約2時間南下して、谷瀬の吊り橋で絶景</p></div>
+            </li>
+            <li data-step="2">
+              <span class="flow-steps__when">夕</span>
+              <div><strong>十津川 → 五條</strong><p>山を下りて、夕ごはんでゆっくりひと休み</p></div>
+            </li>
+            <li data-step="3">
+              <span class="flow-steps__when">夜</span>
+              <div><strong>五條 → 天王寺</strong><p>21:00頃に到着・解散</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Schedule ===== -->
+    <section id="schedule">
+      <div class="container">
+        <h2 class="section-title reveal">タイムスケジュール <span>SCHEDULE</span></h2>
+
+        <div class="nowbar" id="nowbar" role="status">
+          <span class="nowbar__dot"></span>
+          <span id="nowText"></span>
+        </div>
+
+        <ol class="timeline" id="timeline">
+          <li class="tl-item reveal tl-item--start" data-start="10:00" data-end="10:15">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">10:00</span><span class="tl-tag">START</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&amp;destination=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
+              <h3 class="tl-title">天王寺を出発</h3>
+              <p class="tl-text">天王寺で合流。西名阪道で宇陀市へ。</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--spot" data-start="11:15" data-end="13:30">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">11:15〜13:30</span><span class="tl-tag">宇陀市</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>地図</a>
+              </div>
+              <h3 class="tl-title">芸術の森 ＆ 軽めのごはん</h3>
+              <p class="tl-text">室生山上公園で野外アート散策とランチ。</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--move" data-start="13:30" data-end="15:30">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">13:30〜15:30</span><span class="tl-tag">約2時間</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&amp;destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
+              <h3 class="tl-title">十津川村へ大移動</h3>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--spot" data-start="15:30" data-end="17:00">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bridge"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">15:30〜17:00</span><span class="tl-tag">十津川村</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>地図</a>
+              </div>
+              <h3 class="tl-title">谷瀬の吊り橋 ＆ 絶景ブレイク</h3>
+              <p class="tl-text">高さ54m。名物こんにゃくでひと休み。</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--move" data-start="17:00" data-end="18:15">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-sunset"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">17:00〜18:15</span><span class="tl-tag">約1時間15分</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;destination=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
+              <h3 class="tl-title">五條方面へ山を下りる</h3>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--spot" data-start="18:15" data-end="19:45">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-bowl"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">18:15〜19:45</span><span class="tl-tag">五條・橿原</span>
+                <a class="tl-link tl-link--accent" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BA%94%E6%A2%9D%E5%B8%82%20%E5%A4%95%E9%A3%9F" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>お店</a>
+              </div>
+              <h3 class="tl-title">帰り道で夕ごはん</h3>
+              <p class="tl-text">お店は当日の気分で決めよう。</p>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--move" data-start="19:45" data-end="21:00">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-car"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">19:45〜21:00</span><span class="tl-tag">約1時間15分</span>
+                <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
+              </div>
+              <h3 class="tl-title">天王寺へ帰路</h3>
+            </div>
+          </li>
+
+          <li class="tl-item reveal tl-item--goal" data-start="21:00" data-end="22:00">
+            <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-deer"/></svg></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
+              </div>
+              <h3 class="tl-title">天王寺到着・解散</h3>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Points ===== -->
+    <section id="points">
+      <div class="container">
+        <h2 class="section-title reveal">旅のポイント＆メモ <span>MEMO</span></h2>
+        <div class="points">
+          <div class="point reveal">
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-road"/></svg></div>
+            <div>
+              <h3>本格ロングドライブ</h3>
+              <p>総移動時間 <strong>約5時間45分</strong>、走行距離 <strong>約250km</strong>。運転手さんの負担を全員でフォロー！</p>
+            </div>
+          </div>
+          <div class="point reveal">
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-shoe"/></svg></div>
+            <div>
+              <h3>動きやすい靴で</h3>
+              <p>芸術の森の散策と吊り橋は歩きます。ヒールやサンダルは避けて。</p>
+            </div>
+          </div>
+          <div class="point reveal">
+            <div class="point__icon"><svg class="i" aria-hidden="true"><use href="#i-jacket"/></svg></div>
+            <div>
+              <h3>羽織るものを</h3>
+              <p>山間部は市街地より気温が低め。夕方に向けて冷えるので一枚あると安心です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Safety ===== -->
+    <section id="safety">
+      <div class="container">
+        <h2 class="section-title reveal">ドライブ注意事項 <span>SAFETY</span></h2>
+        <div class="safety reveal">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg> 長距離運転・安全運転のために</h3>
+          <ul>
+            <li><span><em>2時間に1回</em>を目安に、道の駅やSA・PAでこまめに休憩しましょう。</span></li>
+            <li><span>運転交代ができる場合は無理せず交代を。眠気を感じたらすぐ休憩。</span></li>
+            <li><span>十津川方面は<em>カーブ・狭い道・落石</em>に注意。スピードは控えめに。</span></li>
+            <li><span>山間部はガソリンスタンドが少なめ。<em>出発前に満タン</em>にしておくと安心です。</span></li>
+            <li><span>電波が入りにくい場所あり。ルートは事前にオフラインで確認を。</span></li>
+            <li><span>十津川からの帰りは<em>日没後の山道</em>。早めのライト点灯、対向車がいないときはハイビームを。</span></li>
+            <li><span>夕ごはんのあとは眠くなりがち。<em>21時の解散まで</em>気を抜かずに。</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Checklist ===== -->
+    <section id="checklist">
+      <div class="container">
+        <h2 class="section-title reveal">持ち物チェック <span>CHECK</span></h2>
+        <ul class="checklist reveal" id="checklistItems">
+          <li><label><input type="checkbox" value="shoes"><span class="checkbox"></span><span class="check-text">動きやすい靴</span></label></li>
+          <li><label><input type="checkbox" value="jacket"><span class="checkbox"></span><span class="check-text">羽織るもの（山間部用）</span></label></li>
+          <li><label><input type="checkbox" value="license"><span class="checkbox"></span><span class="check-text">運転免許証</span></label></li>
+          <li><label><input type="checkbox" value="drink"><span class="checkbox"></span><span class="check-text">飲み物・眠気覚ましのおやつ</span></label></li>
+          <li><label><input type="checkbox" value="battery"><span class="checkbox"></span><span class="check-text">モバイルバッテリー</span></label></li>
+          <li><label><input type="checkbox" value="cash"><span class="checkbox"></span><span class="check-text">現金（駐車場・売店用）</span></label></li>
+        </ul>
+        <p class="check-progress" id="checkProgress"></p>
+      </div>
+    </section>
+    <section id="memo">
+      <div class="container">
+        <h2 class="section-title reveal">メモ <span>NOTE</span></h2>
+        <div class="memo reveal">
+          <label class="memo__label" for="memoText">寄りたいお店・気づいたことなど</label>
+          <textarea id="memoText" rows="6" placeholder="例：吊り橋の売店でこんにゃくを買う"></textarea>
+          <p class="memo__hint" id="memoHint">この端末のブラウザにだけ保存されます</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <svg class="footer-deer" aria-hidden="true"><use href="#deer-buck"/></svg>
+    <div class="seal">奈良<br>縦断</div>
+    <p>いってらっしゃい！安全運転で素敵な一日を</p>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="ページの先頭へ戻る"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></button>
+
+  <script>
+    (function () {
+      // スクロールでふわっと表示
+      // 画面に入った要素に .is-show を付けます。同時に入った要素は 0.12 秒ずつずらして順番に表示。
+      var revealItems = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          var order = 0;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.style.transitionDelay = (order * 0.12) + "s";
+            entry.target.classList.add("is-show");
+            observer.unobserve(entry.target); // 一度表示したら監視をやめる
+            order++;
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        revealItems.forEach(function (el) { observer.observe(el); });
+      }
+
+      var items = document.querySelectorAll(".tl-item");
+
+      // 1日の流れ：ルートを描きながら車を走らせる
+      var map = document.querySelector(".routemap");
+      var routes = map.querySelectorAll(".rm-route");
+      var pins = map.querySelectorAll(".rm-pin");
+      var chips = map.querySelectorAll(".rm-chip");
+      var steps = document.querySelectorAll(".flow-steps li");
+      var car = document.getElementById("routeCar");
+      var SEG_TIME = [1300, 1900, 1300, 1300]; // 区間ごとのアニメーション時間（実際の運転時間に比例）
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var playId = 0;
+
+      function moveCar(path, len) {
+        var pt = path.getPointAtLength(len);
+        car.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+      }
+      function playRoute() {
+        var id = ++playId;
+        map.classList.add("is-playing");
+        pins.forEach(function (p, i) { p.classList.toggle("is-on", i === 0); });
+        chips.forEach(function (c) { c.classList.remove("is-on"); });
+        routes.forEach(function (r) {
+          var len = r.getTotalLength();
+          r.style.strokeDasharray = len;
+          r.style.strokeDashoffset = len;
+        });
+        (function runSeg(i) {
+          steps.forEach(function (st, k) { st.classList.toggle("is-active", k === i); });
+          if (i >= routes.length) return;
+          var path = routes[i], len = path.getTotalLength(), t0 = null;
+          function frame(ts) {
+            if (id !== playId) return; // 再生し直したら古いアニメーションは止める
+            if (t0 === null) t0 = ts;
+            var p = Math.min((ts - t0) / SEG_TIME[i], 1);
+            var e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // ゆっくり出てゆっくり止まる
+            path.style.strokeDashoffset = len * (1 - e);
+            moveCar(path, len * e);
+            if (p < 1) { requestAnimationFrame(frame); return; }
+            chips[i].classList.add("is-on");
+            pins[(i + 1) % pins.length].classList.add("is-on");
+            setTimeout(function () { if (id === playId) runSeg(i + 1); }, 350);
+          }
+          requestAnimationFrame(frame);
+        })(0);
+      }
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        var mapObserver = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { playRoute(); mapObserver.disconnect(); }
+        }, { threshold: 0.4 });
+        mapObserver.observe(map);
+      }
+      document.getElementById("routeReplay").addEventListener("click", function () {
+        if (reduceMotion) return;
+        playRoute();
+      });
+
+      // 現在時刻に合わせて「いまココ」をハイライト
+      function toMin(hm) {
+        var p = hm.split(":");
+        return Number(p[0]) * 60 + Number(p[1]);
+      }
+      function updateNow() {
+        var d = new Date();
+        var now = d.getHours() * 60 + d.getMinutes();
+        var bar = document.getElementById("nowbar");
+        var text = document.getElementById("nowText");
+        var current = null;
+
+        items.forEach(function (el) {
+          var s = toMin(el.dataset.start), e = toMin(el.dataset.end);
+          el.classList.remove("is-now", "is-done");
+          if (now >= s && now < e) { el.classList.add("is-now"); current = el; }
+          else if (now >= e) { el.classList.add("is-done"); }
+        });
+        // 移動の合間（10:15〜11:15）は次のスポットへ向かう途中
+        if (!current && now >= toMin("10:15") && now < toMin("11:15")) {
+          text.textContent = "いまココ：芸術の森へ向かってドライブ中";
+          bar.classList.add("is-visible");
+        } else if (current) {
+          text.textContent = "いまココ：" + current.querySelector(".tl-title").textContent.trim();
+          bar.classList.add("is-visible");
+        } else {
+          items.forEach(function (el) { el.classList.remove("is-done"); });
+          bar.classList.remove("is-visible");
+        }
+      }
+      updateNow();
+      setInterval(updateNow, 60 * 1000);
+
+      // 持ち物チェック（この端末のブラウザに保存）
+      var KEY = "nara-drive-checklist";
+      var boxes = document.querySelectorAll("#checklistItems input");
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saved = {}; }
+      function renderProgress() {
+        var done = 0;
+        boxes.forEach(function (b) { if (b.checked) done++; });
+        document.getElementById("checkProgress").textContent =
+          done === boxes.length ? "準備OK！出発しましょう" : done + " / " + boxes.length + " 準備完了";
+      }
+      boxes.forEach(function (b) {
+        b.checked = !!saved[b.value];
+        b.addEventListener("change", function () {
+          saved[b.value] = b.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+          renderProgress();
+        });
+      });
+      renderProgress();
+
+      // メモ（この端末のブラウザに保存）
+      var MEMO_KEY = "nara-drive-memo";
+      var memo = document.getElementById("memoText");
+      try { memo.value = localStorage.getItem(MEMO_KEY) || ""; } catch (e) {}
+      memo.addEventListener("input", function () {
+        try { localStorage.setItem(MEMO_KEY, memo.value); } catch (e) {}
+      });
+
+      // トップへ戻るボタン
+      var toTop = document.getElementById("toTop");
+      window.addEventListener("scroll", function () {
+        toTop.classList.toggle("is-visible", window.scrollY > 400);
+      }, { passive: true });
+      toTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
+  </script>
+</body>
+</html>
