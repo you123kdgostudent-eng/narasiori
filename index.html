@@ -309,14 +309,16 @@
 
     .tl-time {
       display: inline-block;
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-weight: 700;
-      font-size: .9rem;
+      font-size: 1rem;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.6;
       color: #fff;
       background: var(--matcha);
-      padding: .1em .8em;
+      padding: .05em .7em;
       border-radius: 6px;
-      letter-spacing: .04em;
+      letter-spacing: .02em;
     }
     .tl-item--spot .tl-time { background: var(--shu); }
     .tl-item--goal .tl-time { background: var(--gold); }
@@ -331,13 +333,15 @@
       vertical-align: 2px;
     }
     .tl-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      margin: .45em 0 .25em;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin: .5em 0 .15em;
       color: var(--matcha-deep);
-      line-height: 1.45;
+      line-height: 1.4;
+      word-break: auto-phrase;  /* 対応ブラウザでは単語の途中で改行しない */
     }
-    .tl-text { margin: 0; font-size: .9rem; color: var(--ink-soft); }
+    .tl-text { margin: 0; font-size: .86rem; line-height: 1.6; color: var(--ink-soft); }
     .tl-highlights {
       display: flex; flex-wrap: wrap; gap: 6px;
       list-style: none; padding: 0; margin: 12px 0 0;
@@ -750,7 +754,7 @@
             <div class="tl-card">
               <span class="tl-time">10:00</span><span class="tl-tag">START</span>
               <h3 class="tl-title">天王寺を出発</h3>
-              <p class="tl-text">天王寺で合流。西名阪道などを経由して宇陀市へドライブ！</p>
+              <p class="tl-text">天王寺で合流。西名阪道で宇陀市へ。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
                    href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> 集合場所</a>
@@ -762,8 +766,8 @@
             <div class="tl-icon"><svg class="i" aria-hidden="true"><use href="#i-palette"/></svg></div>
             <div class="tl-card">
               <span class="tl-time">11:15 〜 13:30</span><span class="tl-tag">宇陀市</span>
-              <h3 class="tl-title">室生山上公園 芸術の森 ＆ 軽めのごはん</h3>
-              <p class="tl-text">自然とアートが融合した野外ミュージアムを散策。園内または道中でランチ。</p>
+              <h3 class="tl-title">室生山上公園 芸術の森<br>＆ 軽めのごはん</h3>
+              <p class="tl-text">野外アート散策とランチ。</p>
               <ul class="tl-highlights">
                 <li>野外アート</li>
                 <li>フォトスポット</li>
@@ -783,7 +787,7 @@
             <div class="tl-card">
               <span class="tl-time">13:30 〜 15:30</span><span class="tl-tag">約2時間</span>
               <h3 class="tl-title">十津川村へ大移動</h3>
-              <p class="tl-text">奈良の山あいを抜けて南部・十津川村へ。カーブの多い山道、運転交代や休憩もこまめに。</p>
+              <p class="tl-text">約2時間の山道。休憩はこまめに。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
                    href="https://www.google.com/maps/dir/?api=1&origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ルートを確認</a>
@@ -796,7 +800,7 @@
             <div class="tl-card">
               <span class="tl-time">15:30 〜 17:00</span><span class="tl-tag">十津川村</span>
               <h3 class="tl-title">谷瀬の吊り橋 ＆ 絶景ブレイク</h3>
-              <p class="tl-text">高さ54m・日本屈指の巨大な吊り橋でスリルと絶景を満喫。名物こんにゃく等でひと休み。</p>
+              <p class="tl-text">高さ54mの吊り橋でスリルと絶景。</p>
               <ul class="tl-highlights">
                 <li>高さ54m</li>
                 <li>絶景</li>
@@ -814,7 +818,7 @@
             <div class="tl-card">
               <span class="tl-time">17:00 〜 18:15</span><span class="tl-tag">約1時間15分</span>
               <h3 class="tl-title">五條方面へ山を下りる</h3>
-              <p class="tl-text">国道168号を北へ。日没前後で山道が暗くなるので、早めのライト点灯とゆっくり運転で。</p>
+              <p class="tl-text">日没前後。早めにライト点灯を。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
                    href="https://www.google.com/maps/dir/?api=1&origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&destination=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> ルートを確認</a>
@@ -827,7 +831,7 @@
             <div class="tl-card">
               <span class="tl-time">18:15 〜 19:45</span><span class="tl-tag">五條・橿原あたり</span>
               <h3 class="tl-title">帰り道で夕ごはん</h3>
-              <p class="tl-text">長い山道を走りきったら、ゆっくり夕ごはん。運転手さんもしっかり休憩を。お店は当日の気分と混み具合で決めましょう。</p>
+              <p class="tl-text">お店は当日の気分で決めよう。</p>
               <ul class="tl-highlights">
                 <li>ゆっくり休憩</li>
                 <li>運転交代のタイミング</li>
@@ -844,7 +848,7 @@
             <div class="tl-card">
               <span class="tl-time">19:45 〜 21:00</span><span class="tl-tag">約1時間15分</span>
               <h3 class="tl-title">天王寺へ帰路</h3>
-              <p class="tl-text">安全第一で大阪へ戻ります。満腹のあとは眠くなりやすいので、無理せず休憩を。</p>
+              <p class="tl-text">食後は眠くなりがち。無理せず休憩を。</p>
               <div class="tl-actions">
                 <a class="btn" target="_blank" rel="noopener"
                    href="https://www.google.com/maps/dir/?api=1&origin=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&travelmode=driving"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg> 帰りのルート</a>
@@ -857,7 +861,7 @@
             <div class="tl-card">
               <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
               <h3 class="tl-title">天王寺到着・解散</h3>
-              <p class="tl-text">おつかれさまでした！夜遅めの解散なので、気をつけて帰りましょう。</p>
+              <p class="tl-text">おつかれさまでした！</p>
             </div>
           </li>
         </ol>
