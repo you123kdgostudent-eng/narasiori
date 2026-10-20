@@ -274,7 +274,7 @@
     .tl-item {
       position: relative;
       padding-left: 52px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .tl-icon {
       position: absolute; left: 0; top: 4px;
@@ -294,14 +294,14 @@
       background: var(--paper);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 10px 14px 12px;
+      padding: 9px 14px 10px;
       border: 1px solid transparent;
       transition: border-color .3s, box-shadow .3s;
     }
     .tl-item--move .tl-card {
-      background: rgba(255, 253, 248, .6);
+      background: transparent;
       box-shadow: none;
-      border: 1px dashed var(--line);
+      border: 1px solid transparent;
     }
     .tl-item.is-now .tl-card { border: 2px solid var(--shu); box-shadow: 0 8px 28px rgba(217, 83, 79, .18); }
     .tl-item.is-now .tl-icon { background: var(--shu); border-color: var(--shu); }
@@ -330,6 +330,12 @@
       border-radius: 999px;
       padding: 0 .7em;
     }
+    /* 移動は「つなぎ」の細い行にして、1画面に収める */
+    .tl-item--move { margin-bottom: 8px; }
+    .tl-item--move .tl-card { padding: 2px 14px; }
+    .tl-item--move .tl-icon { width: 30px; height: 30px; left: 4px; top: 2px; font-size: .95rem; }
+    .tl-item--move .tl-time { background: transparent; color: var(--matcha); padding: 0; font-size: .82rem; }
+    .tl-item--move .tl-title { font-size: .88rem; color: var(--matcha-soft); margin-top: .1em; }
     .tl-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .tl-link {
       margin-left: auto;
@@ -617,6 +623,7 @@
       .timeline::before { left: 15px; }
       .tl-icon { width: 44px; height: 44px; font-size: 1.25rem; }
       .tl-item { padding-left: 60px; }
+      .tl-item--move .tl-icon { left: 7px; }
       .hero__inner { padding-bottom: 190px; }
     }
 
@@ -794,7 +801,6 @@
                 <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%AE%A4%E7%94%9F%E5%B1%B1%E4%B8%8A%E5%85%AC%E5%9C%92%E8%8A%B8%E8%A1%93%E3%81%AE%E6%A3%AE&amp;destination=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
               </div>
               <h3 class="tl-title">十津川村へ大移動</h3>
-              <p class="tl-text">山道が続くので休憩はこまめに。</p>
             </div>
           </li>
 
@@ -818,7 +824,6 @@
                 <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E8%B0%B7%E7%80%AC%E3%81%AE%E5%90%8A%E3%82%8A%E6%A9%8B&amp;destination=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
               </div>
               <h3 class="tl-title">五條方面へ山を下りる</h3>
-              <p class="tl-text">日没前後。早めにライト点灯を。</p>
             </div>
           </li>
 
@@ -842,7 +847,6 @@
                 <a class="tl-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=%E5%A5%88%E8%89%AF%E7%9C%8C%E4%BA%94%E6%A2%9D%E5%B8%82&amp;destination=%E5%A4%A9%E7%8E%8B%E5%AF%BA%E9%A7%85&amp;travelmode=driving" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>ルート</a>
               </div>
               <h3 class="tl-title">天王寺へ帰路</h3>
-              <p class="tl-text">食後は眠くなりがち。無理せず休憩を。</p>
             </div>
           </li>
 
@@ -853,7 +857,6 @@
                 <span class="tl-time">21:00頃</span><span class="tl-tag">GOAL</span>
               </div>
               <h3 class="tl-title">天王寺到着・解散</h3>
-              <p class="tl-text">おつかれさまでした！</p>
             </div>
           </li>
         </ol>
